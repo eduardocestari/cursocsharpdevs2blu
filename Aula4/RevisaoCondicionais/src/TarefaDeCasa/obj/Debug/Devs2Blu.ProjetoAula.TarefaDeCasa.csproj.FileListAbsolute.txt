@@ -1,0 +1,8 @@
+D:\devs2blu\Aula4\RevisaoCondicionais\src\TarefaDeCasa\bin\Debug\TarefaDeCasa.exe.config
+D:\devs2blu\Aula4\RevisaoCondicionais\src\TarefaDeCasa\bin\Debug\TarefaDeCasa.exe
+D:\devs2blu\Aula4\RevisaoCondicionais\src\TarefaDeCasa\bin\Debug\TarefaDeCasa.pdb
+D:\devs2blu\Aula4\RevisaoCondicionais\src\TarefaDeCasa\obj\Debug\Devs2Blu.ProjetoAula.TarefaDeCasa.csproj.AssemblyReference.cache
+D:\devs2blu\Aula4\RevisaoCondicionais\src\TarefaDeCasa\obj\Debug\Devs2Blu.ProjetoAula.TarefaDeCasa.csproj.SuggestedBindingRedirects.cache
+D:\devs2blu\Aula4\RevisaoCondicionais\src\TarefaDeCasa\obj\Debug\Devs2Blu.ProjetoAula.TarefaDeCasa.csproj.CoreCompileInputs.cache
+D:\devs2blu\Aula4\RevisaoCondicionais\src\TarefaDeCasa\obj\Debug\TarefaDeCasa.exe
+D:\devs2blu\Aula4\RevisaoCondicionais\src\TarefaDeCasa\obj\Debug\TarefaDeCasa.pdb

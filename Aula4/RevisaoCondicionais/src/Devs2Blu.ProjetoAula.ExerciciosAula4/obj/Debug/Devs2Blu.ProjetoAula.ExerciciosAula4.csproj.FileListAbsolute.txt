@@ -1,0 +1,8 @@
+D:\devs2blu\Aula4\RevisaoCondicionais\src\Devs2Blu.ProjetoAula.ExerciciosAula4\bin\Debug\Devs2Blu.ProjetoAula.ExerciciosAula4.exe.config
+D:\devs2blu\Aula4\RevisaoCondicionais\src\Devs2Blu.ProjetoAula.ExerciciosAula4\bin\Debug\Devs2Blu.ProjetoAula.ExerciciosAula4.exe
+D:\devs2blu\Aula4\RevisaoCondicionais\src\Devs2Blu.ProjetoAula.ExerciciosAula4\bin\Debug\Devs2Blu.ProjetoAula.ExerciciosAula4.pdb
+D:\devs2blu\Aula4\RevisaoCondicionais\src\Devs2Blu.ProjetoAula.ExerciciosAula4\obj\Debug\Devs2Blu.ProjetoAula.ExerciciosAula4.csproj.AssemblyReference.cache
+D:\devs2blu\Aula4\RevisaoCondicionais\src\Devs2Blu.ProjetoAula.ExerciciosAula4\obj\Debug\Devs2Blu.ProjetoAula.ExerciciosAula4.csproj.SuggestedBindingRedirects.cache
+D:\devs2blu\Aula4\RevisaoCondicionais\src\Devs2Blu.ProjetoAula.ExerciciosAula4\obj\Debug\Devs2Blu.ProjetoAula.ExerciciosAula4.csproj.CoreCompileInputs.cache
+D:\devs2blu\Aula4\RevisaoCondicionais\src\Devs2Blu.ProjetoAula.ExerciciosAula4\obj\Debug\Devs2Blu.ProjetoAula.ExerciciosAula4.exe
+D:\devs2blu\Aula4\RevisaoCondicionais\src\Devs2Blu.ProjetoAula.ExerciciosAula4\obj\Debug\Devs2Blu.ProjetoAula.ExerciciosAula4.pdb

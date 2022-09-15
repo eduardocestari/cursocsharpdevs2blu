@@ -1,0 +1,8 @@
+D:\devs2blu\Aula4\RevisaoCondicionais\src\RevisaoCondicionaisProfessor\bin\Debug\RevisaoCondicionaisProfessor.exe.config
+D:\devs2blu\Aula4\RevisaoCondicionais\src\RevisaoCondicionaisProfessor\bin\Debug\RevisaoCondicionaisProfessor.exe
+D:\devs2blu\Aula4\RevisaoCondicionais\src\RevisaoCondicionaisProfessor\bin\Debug\RevisaoCondicionaisProfessor.pdb
+D:\devs2blu\Aula4\RevisaoCondicionais\src\RevisaoCondicionaisProfessor\obj\Debug\RevisaoCondicionaisProfessor.csproj.AssemblyReference.cache
+D:\devs2blu\Aula4\RevisaoCondicionais\src\RevisaoCondicionaisProfessor\obj\Debug\RevisaoCondicionaisProfessor.csproj.SuggestedBindingRedirects.cache
+D:\devs2blu\Aula4\RevisaoCondicionais\src\RevisaoCondicionaisProfessor\obj\Debug\RevisaoCondicionaisProfessor.csproj.CoreCompileInputs.cache
+D:\devs2blu\Aula4\RevisaoCondicionais\src\RevisaoCondicionaisProfessor\obj\Debug\RevisaoCondicionaisProfessor.exe
+D:\devs2blu\Aula4\RevisaoCondicionais\src\RevisaoCondicionaisProfessor\obj\Debug\RevisaoCondicionaisProfessor.pdb

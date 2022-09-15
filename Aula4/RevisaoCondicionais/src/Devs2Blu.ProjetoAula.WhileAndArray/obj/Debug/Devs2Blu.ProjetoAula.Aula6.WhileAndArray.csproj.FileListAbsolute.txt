@@ -1,0 +1,8 @@
+D:\devs2blu\Aula4\RevisaoCondicionais\src\Devs2Blu.ProjetoAula.WhileAndArray\bin\Debug\Devs2Blu.ProjetoAula.WhileAndArray.exe.config
+D:\devs2blu\Aula4\RevisaoCondicionais\src\Devs2Blu.ProjetoAula.WhileAndArray\bin\Debug\Devs2Blu.ProjetoAula.WhileAndArray.exe
+D:\devs2blu\Aula4\RevisaoCondicionais\src\Devs2Blu.ProjetoAula.WhileAndArray\bin\Debug\Devs2Blu.ProjetoAula.WhileAndArray.pdb
+D:\devs2blu\Aula4\RevisaoCondicionais\src\Devs2Blu.ProjetoAula.WhileAndArray\obj\Debug\Devs2Blu.ProjetoAula.Aula6.WhileAndArray.csproj.AssemblyReference.cache
+D:\devs2blu\Aula4\RevisaoCondicionais\src\Devs2Blu.ProjetoAula.WhileAndArray\obj\Debug\Devs2Blu.ProjetoAula.Aula6.WhileAndArray.csproj.SuggestedBindingRedirects.cache
+D:\devs2blu\Aula4\RevisaoCondicionais\src\Devs2Blu.ProjetoAula.WhileAndArray\obj\Debug\Devs2Blu.ProjetoAula.Aula6.WhileAndArray.csproj.CoreCompileInputs.cache
+D:\devs2blu\Aula4\RevisaoCondicionais\src\Devs2Blu.ProjetoAula.WhileAndArray\obj\Debug\Devs2Blu.ProjetoAula.WhileAndArray.exe
+D:\devs2blu\Aula4\RevisaoCondicionais\src\Devs2Blu.ProjetoAula.WhileAndArray\obj\Debug\Devs2Blu.ProjetoAula.WhileAndArray.pdb

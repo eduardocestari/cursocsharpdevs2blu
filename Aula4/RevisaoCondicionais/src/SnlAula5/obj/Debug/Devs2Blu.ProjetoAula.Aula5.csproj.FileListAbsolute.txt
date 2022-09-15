@@ -1,0 +1,8 @@
+D:\devs2blu\Aula4\RevisaoCondicionais\src\SnlAula5\bin\Debug\SnlAula5.exe.config
+D:\devs2blu\Aula4\RevisaoCondicionais\src\SnlAula5\bin\Debug\SnlAula5.exe
+D:\devs2blu\Aula4\RevisaoCondicionais\src\SnlAula5\bin\Debug\SnlAula5.pdb
+D:\devs2blu\Aula4\RevisaoCondicionais\src\SnlAula5\obj\Debug\Devs2Blu.ProjetoAula.Aula5.csproj.AssemblyReference.cache
+D:\devs2blu\Aula4\RevisaoCondicionais\src\SnlAula5\obj\Debug\Devs2Blu.ProjetoAula.Aula5.csproj.SuggestedBindingRedirects.cache
+D:\devs2blu\Aula4\RevisaoCondicionais\src\SnlAula5\obj\Debug\Devs2Blu.ProjetoAula.Aula5.csproj.CoreCompileInputs.cache
+D:\devs2blu\Aula4\RevisaoCondicionais\src\SnlAula5\obj\Debug\SnlAula5.exe
+D:\devs2blu\Aula4\RevisaoCondicionais\src\SnlAula5\obj\Debug\SnlAula5.pdb
