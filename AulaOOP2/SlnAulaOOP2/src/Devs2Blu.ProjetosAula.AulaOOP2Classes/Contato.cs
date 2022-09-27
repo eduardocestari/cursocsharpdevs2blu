@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace Devs2Blu.ProjetosAula.AulaOOP2Classes
 {
+    
+    //CLASSE CONTATO
     public class Contato
     {
         public string Nome { get; set; }
@@ -19,6 +21,7 @@ namespace Devs2Blu.ProjetosAula.AulaOOP2Classes
         public string Estado { get; set; }
         public string Texto { get; set; }
 
+        // CONSTRUTOR
         public Contato(){}
 
         public Contato (String nome, String telCel, String email)

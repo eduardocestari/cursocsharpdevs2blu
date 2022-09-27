@@ -26,6 +26,7 @@ namespace Devs2Blu.ProjetosAula.AulaOOP2
         #region Eventos
         private void frmContato_Load(object sender, EventArgs e)
         {
+            //INSTACIAR OBJETO
             Contato = new Contato();
         }
 
@@ -45,6 +46,7 @@ namespace Devs2Blu.ProjetosAula.AulaOOP2
 
         }
 
+        //Métodos 
         private void btLimpar_Click(object sender, EventArgs e)
         {
             LimparForm();
