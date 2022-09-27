@@ -17,7 +17,7 @@ namespace Devs2Blu.ProjetosAula.OOP3.Models.Model
             TipoPessoa = TipoPessoa.PF;
         }
 
-        public Recepcionista(Int32 codigo, String nome, String cpf, String setor)
+        public Recepcionista(Int32 codigo, String nome, String cpf, string setor)
         {
             Codigo = codigo;
             Nome = nome;

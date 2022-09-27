@@ -8,25 +8,21 @@ using System.Threading.Tasks;
 
 namespace Devs2Blu.ProjetosAula.OOP3.Main.Cadastros
 {
-    internal class CadastroMedico
+    public class CadastroMedico
     {
-
-        public CadastroMedico()
-        {
-
-        }
         public void MenuCadastro()
         {
             Int32 opcao;
 
             do
             {
-                Console.WriteLine("----- Cadastro de Médico -----");
-                Console.WriteLine("----- 1 - Lista de Médico ------");
-                Console.WriteLine("----- 2 - Cadastro de Médico -----");
-                Console.WriteLine("----- 3 - Alterar Médico -----");
-                Console.WriteLine("---------------------------");
-                Console.WriteLine("----- 0 - Sair -----");
+                Console.Clear();
+                Console.WriteLine("----- Cadastro de Medicos -----");
+                Console.WriteLine("----- 1- Lista de Medicos -----");
+                Console.WriteLine("----- 2- Cadastro de Medicos -----");
+                Console.WriteLine("----- 3- Alterar Medicos -----");
+                Console.WriteLine("---------------------");
+                Console.WriteLine("----- 0- Sair -----");
                 Int32.TryParse(Console.ReadLine(), out opcao);
 
                 switch (opcao)
@@ -39,26 +35,27 @@ namespace Devs2Blu.ProjetosAula.OOP3.Main.Cadastros
                 }
 
             } while (!opcao.Equals((int)MenuEnums.SAIR));
-
-
         }
 
         public void ListarMedicos()
         {
             Console.Clear();
 
-            foreach (Medico medico in Program.Mock.ListaMedicos)
+            foreach (var medico in Program.Mock.ListaMedicos)
             {
-                Console.WriteLine("--------------------------------------");
-                Console.WriteLine($"Tipo Pessoa: {medico.TipoPessoa}");
-                Console.WriteLine($"Cod. Médico: {medico.Codigo}");
+                Console.WriteLine("-----------------------------------------");
+                Console.WriteLine($"Medico: {medico.CodigoMedico}");
                 Console.WriteLine($"Nome: {medico.Nome}");
-                Console.WriteLine($"CPF/CNPJ: {medico.CGCCPF}");
-                Console.WriteLine($"CRM: {medico.CRM}");
                 Console.WriteLine($"Especialidade: {medico.Especialidade}");
-                Console.WriteLine("--------------------------------------");
-
+                Console.WriteLine($"CRM: {medico.CRM}");
+                Console.WriteLine("-----------------------------------------\n");
             }
+            Console.ReadLine();
+        }
+
+        public void CadastrarMedico()
+        {
+
         }
 
         public void AlterarMedico()
@@ -70,7 +67,5 @@ namespace Devs2Blu.ProjetosAula.OOP3.Main.Cadastros
         {
 
         }
-
-
     }
 }

@@ -24,12 +24,11 @@ namespace Devs2Blu.ProjetosAula.OOP3.Models.Model
             Nome = nome;
             CGCCPF = cpf;
             TipoPessoa = TipoPessoa.PF;
-            Especialidade = especialidade;
             CRM = crm;
+            Especialidade = especialidade;
 
             Random rd = new Random();
             CodigoMedico = Int32.Parse($"{codigo}{rd.Next(10, 100)}");
-            
         }
     }
 }
