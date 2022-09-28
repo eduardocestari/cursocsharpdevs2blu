@@ -16,56 +16,6 @@ namespace Devs2Blu.ProjetosAula.OOP3.Main.Cadastros
         {
 
         }
-
-        public void MenuCadastro()
-        {
-            Int32 opcao;
-
-            do
-            {
-                Console.Clear();
-                Console.WriteLine("----- Cadastro de Pacientes -----");
-                Console.WriteLine("----- 1- Lista de Pacientes -----");
-                Console.WriteLine("----- 2- Cadastro de Pacientes -----");
-                Console.WriteLine("----- 3- Alterar Pacientes -----");
-                Console.WriteLine("---------------------");
-                Console.WriteLine("----- 0- Sair -----");
-                Int32.TryParse(Console.ReadLine(), out opcao);
-
-                switch (opcao)
-                {
-                    case (int)MenuEnums.LISTAR:
-                        ListarPacientes();
-                        break;
-                    default:
-                        break;
-                }
-
-            } while (!opcao.Equals((int)MenuEnums.SAIR));
-        }
-
-        
-        public void Listar()
-        {
-            ListarPacientes();
-        }
-
-        public void Cadastrar(Pessoa pessoa)
-        {
-            CadastrarPaciente((Paciente)pessoa);
-        }
-
-        public void Alterar(Pessoa pessoa)
-        {
-            AlterarPaciente((Paciente)pessoa);
-        }
-
-        public void Excluir(Pessoa pessoa)
-        {
-            ExcluirPaciente((Paciente)pessoa);
-        }
-
-        #region FACADE
         private void ListarPacientes()
         {
             Console.Clear();
@@ -87,7 +37,7 @@ namespace Devs2Blu.ProjetosAula.OOP3.Main.Cadastros
             Program.Mock.ListaPacientes.Add(novoPaciente);
         }
 
-        private void AlterarPaciente(Paciente Paciente)
+        private void AlterarPaciente(Paciente paciente)
         {
 
         }
@@ -95,6 +45,45 @@ namespace Devs2Blu.ProjetosAula.OOP3.Main.Cadastros
         private void ExcluirPaciente(Paciente paciente)
         {
 
+        }
+
+
+        #region FACADE
+        public Int32 MenuCadastro()
+        {
+            Int32 opcao;
+            Console.Clear();
+            Console.WriteLine("----- Cadastro de Pacientes -----");
+            Console.WriteLine("----- 1- Lista de Pacientes -----");
+            Console.WriteLine("----- 2- Cadastro de Pacientes -----");
+            Console.WriteLine("----- 3- Alterar Pacientes -----");
+            Console.WriteLine("---------------------");
+            Console.WriteLine("----- 0- Sair -----");
+            Int32.TryParse(Console.ReadLine(), out opcao);
+            return opcao;
+        }
+
+        public void Listar()
+        {
+            ListarPacientes();
+        }
+
+        public void Cadastrar()
+        {
+            Paciente paciente = new Paciente();
+            CadastrarPaciente(paciente);
+        }
+
+        public void Alterar()
+        {
+            Paciente paciente = new Paciente();
+            AlterarPaciente(paciente);
+        }
+
+        public void Excluir()
+        {
+            Paciente paciente = new Paciente();
+            ExcluirPaciente(paciente);
         }
 
         #endregion

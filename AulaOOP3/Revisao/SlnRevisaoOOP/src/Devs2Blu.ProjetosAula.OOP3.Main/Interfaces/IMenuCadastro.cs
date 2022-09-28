@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Devs2Blu.ProjetosAula.OOP3.Main.Interfaces
 {
-    internal interface IMenuCadastro
+    public interface IMenuCadastro
     {
-        void MenuCadastro();
+        Int32 MenuCadastro();
         void Listar();
-        void Cadastrar(Pessoa pessoa);
-        void Alterar(Pessoa pessoa);
-        void Excluir(Pessoa pessoa);
+        void Cadastrar();
+        void Alterar();
+        void Excluir();
     }
 }
