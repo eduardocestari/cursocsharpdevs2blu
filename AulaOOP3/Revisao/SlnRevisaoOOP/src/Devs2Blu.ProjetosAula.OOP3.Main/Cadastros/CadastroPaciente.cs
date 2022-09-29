@@ -47,6 +47,7 @@ namespace Devs2Blu.ProjetosAula.OOP3.Main.Cadastros
         private void ExcluirPaciente(Paciente paciente)
         {
             Program.Mock.ListaPacientes.Remove(paciente);
+            
         }
         private void ListarPacientesByCodeAndName()
         {
@@ -67,6 +68,7 @@ namespace Devs2Blu.ProjetosAula.OOP3.Main.Cadastros
             Console.WriteLine("----- 1- Lista de Pacientes -----");
             Console.WriteLine("----- 2- Cadastro de Pacientes -----");
             Console.WriteLine("----- 3- Alterar Pacientes -----");
+            Console.WriteLine("----- 4- Excluir Pacientes -----");
             Console.WriteLine("---------------------");
             Console.WriteLine("----- 0- Sair -----");
             Int32.TryParse(Console.ReadLine(), out opcao);
@@ -152,9 +154,40 @@ namespace Devs2Blu.ProjetosAula.OOP3.Main.Cadastros
 
         public void Excluir()
         {
-            Paciente paciente = new Paciente();
-            ExcluirPaciente(paciente);
-        }
+    
+            Console.Clear();
+            Paciente paciente;
+            int codigoPaciente;
+
+            Console.WriteLine("Informe o Paciente que Deseja Excluir:\n");
+            ListarPacientesByCodeAndName();
+            Int32.TryParse(Console.ReadLine(), out codigoPaciente);
+             paciente = Program.Mock.ListaPacientes.Find(p => p.CodigoPaciente == codigoPaciente);
+
+            string opcaoAlterar;
+ 
+                Console.WriteLine($"Você irá excluir o paciente: {paciente.CodigoPaciente} - {paciente.Nome} ");
+                Console.WriteLine("Digite 01 para confirmar ou 00 para Abortar");
+                opcaoAlterar = Console.ReadLine();
+
+                switch (opcaoAlterar)
+                {
+                    case "01":
+                        ExcluirPaciente(paciente);
+                        Console.WriteLine("Paciente Excluído com Sucesso!");
+                        Console.ReadLine();
+                    break;
+                    default:
+                    Console.Clear();
+                    Console.WriteLine("Abortado!");
+                    Console.ReadLine();
+                    break;
+                }
+                
+                    
+            }
+
+        
 
         #endregion
     }
