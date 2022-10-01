@@ -14,7 +14,6 @@ namespace Devs2Blu.ProjetosAula.OOP3.Main.Cadastros
     {
         public CadastroPaciente()
         {
-
         }
         private void ListarPacientes()
         {
@@ -22,12 +21,11 @@ namespace Devs2Blu.ProjetosAula.OOP3.Main.Cadastros
 
             foreach (Paciente paciente in Program.Mock.ListaPacientes)
             {
-                Console.WriteLine("-----------------------------------------");
                 Console.WriteLine($"Paciente: {paciente.CodigoPaciente}");
                 Console.WriteLine($"Nome: {paciente.Nome}");
                 Console.WriteLine($"CPF: {paciente.CGCCPF}");
                 Console.WriteLine($"Convenio: {paciente.Convenio}");
-                Console.WriteLine("-----------------------------------------\n");
+                Console.WriteLine("------------------");
             }
             Console.ReadLine();
         }
@@ -58,19 +56,17 @@ namespace Devs2Blu.ProjetosAula.OOP3.Main.Cadastros
             Console.WriteLine("\n");
         }
 
-
         #region FACADE
         public Int32 MenuCadastro()
         {
             Int32 opcao;
             Console.Clear();
-            Console.WriteLine("----- Cadastro de Pacientes -----");
-            Console.WriteLine("----- 1- Lista de Pacientes -----");
-            Console.WriteLine("----- 2- Cadastro de Pacientes -----");
-            Console.WriteLine("----- 3- Alterar Pacientes -----");
-            Console.WriteLine("----- 4- Excluir Pacientes -----");
-            Console.WriteLine("---------------------");
-            Console.WriteLine("----- 0- Sair -----");
+            Console.WriteLine("Cadastro de Pacientes \n");
+            Console.WriteLine("1 - Lista de Pacientes ");
+            Console.WriteLine("2 - Cadastro de Pacientes");
+            Console.WriteLine("3 - Alterar Pacientes");
+            Console.WriteLine("4 - Excluir Pacientes");
+            Console.WriteLine("0 - Sair");
             Int32.TryParse(Console.ReadLine(), out opcao);
             return opcao;
         }
@@ -183,12 +179,7 @@ namespace Devs2Blu.ProjetosAula.OOP3.Main.Cadastros
                     Console.ReadLine();
                     break;
                 }
-                
-                    
             }
-
-        
-
         #endregion
     }
 }

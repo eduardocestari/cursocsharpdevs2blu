@@ -26,16 +26,16 @@ namespace Devs2Blu.ProjetosAula.OOP3.Main
                 if (opcaoMenuCadastros.Equals((int)MenuEnums.SAIR))
                 {
                     Console.Clear();
-                    Console.WriteLine("----- Sistema de Gerencimento de Clínicas -----");
-                    Console.WriteLine("----- 10 - Cadastro de Pacientes -----");
-                    Console.WriteLine("----- 20 - Cadastro de Médicos -----");
-                    Console.WriteLine("----- 30 - Cadastro de Recepcionistas -----");
-                    Console.WriteLine("----- 40 - Cadastro de Fornecedores -----");
-                    Console.WriteLine("----- 50 - Agenda -----");
-                    Console.WriteLine("----- 60 - Prontuário -----");
-                    Console.WriteLine("----- 70 - Financeiro -----");
-                    Console.WriteLine("---------------------");
-                    Console.WriteLine("----- 0 - Sair -----");
+                    Console.WriteLine("Sistema de Gerencimento de Clínicas \n");
+                    Console.WriteLine("10 - Cadastro de Pacientes");
+                    Console.WriteLine("20 - Cadastro de Médicos");
+                    Console.WriteLine("30 - Cadastro de Recepcionistas");
+                    Console.WriteLine("40 - Cadastro de Fornecedores");
+                    Console.WriteLine("50 - Agenda");
+                    Console.WriteLine("60 - Prontuário");
+                    Console.WriteLine("70 - Financeiro");
+                    Console.WriteLine("---------------");
+                    Console.WriteLine("0 - Para Sair");
                     Int32.TryParse(Console.ReadLine(), out opcao);
                 }
 
@@ -47,6 +47,14 @@ namespace Devs2Blu.ProjetosAula.OOP3.Main
                         break;
                     case (int)MenuEnums.CAD_MED:
                         menuCadastros = new CadastroMedico();
+                        opcaoMenuCadastros = menuCadastros.MenuCadastro();
+                        break;
+                    case (int)MenuEnums.CAD_REC:
+                        menuCadastros = new CadastroRecepcionista();
+                        opcaoMenuCadastros = menuCadastros.MenuCadastro();
+                        break;
+                    case (int)MenuEnums.CAD_FOR:
+                        menuCadastros = new CadastroFornecedor();
                         opcaoMenuCadastros = menuCadastros.MenuCadastro();
                         break;
                     default:
