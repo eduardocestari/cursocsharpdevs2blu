@@ -8,8 +8,7 @@ namespace Devs2Blu.ProjetosAula.OOP3.Main.Utils.Enums
 {
     public enum MenuEnums
     {
-
-        //Opções Gerais
+        // Opções Gerais
         SAIR = 0,
         LISTAR = 1,
         CADASTRAR = 2,
@@ -24,7 +23,5 @@ namespace Devs2Blu.ProjetosAula.OOP3.Main.Utils.Enums
         AGENDA = 50,
         PRONTUARIO = 60,
         FINANCEIRO = 70
-
-
     }
 }

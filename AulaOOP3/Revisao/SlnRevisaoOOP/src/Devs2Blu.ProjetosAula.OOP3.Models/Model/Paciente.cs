@@ -12,10 +12,8 @@ namespace Devs2Blu.ProjetosAula.OOP3.Models.Model
         public Int32 CodigoPaciente { get; set; }
         public String Convenio { get; set; }
 
-
         public Paciente()
         {
-            //Construtor Vazio
             TipoPessoa = TipoPessoa.PF;
         }
 
@@ -29,10 +27,6 @@ namespace Devs2Blu.ProjetosAula.OOP3.Models.Model
 
             Random rd = new Random();
             CodigoPaciente = Int32.Parse($"{codigo}{rd.Next(100, 999)}");
-;
-
         }
     }
-
-
 }
