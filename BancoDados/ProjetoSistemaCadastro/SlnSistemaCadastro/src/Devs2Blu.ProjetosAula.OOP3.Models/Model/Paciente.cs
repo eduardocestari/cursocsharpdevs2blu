@@ -13,14 +13,44 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Models.Model
         
         public Pessoa Pessoa { get; set; }
 
-        public String Convenio { get; set; }
+        public Convenio Convenio { get; set; }
+
+        public Int32 NrProntuario { get; set; }
+
+        public FlStatus Status { get; set; }
+        public String PacienteRisco { get; set; }
+
+        public Int32 FlObito { get; set; }
 
         public Paciente()
         {
             Pessoa = new Pessoa();
+            Convenio = new Convenio();
+            Status = FlStatus.A;
+            FlObito = 0;
             Pessoa.TipoPessoa = TipoPessoa.PF;
+
         }
 
+        public Paciente(int id, Pessoa pessoa, Convenio convenio, int nrProntuario, FlStatus status, string pacienteRisco, int flObito)
+        {
+            Id = id;
+            Pessoa = pessoa;
+            Convenio = convenio;
+            NrProntuario = nrProntuario;
+            Status = status;
+            PacienteRisco = pacienteRisco;
+            FlObito = flObito;
+        }
 
+        public Paciente(Pessoa pessoa, Convenio convenio, int nrProntuario, string pacienteRisco)
+        {
+            Pessoa = pessoa;
+            Convenio = convenio;
+            NrProntuario = nrProntuario;
+            Status = FlStatus.A;
+            PacienteRisco = pacienteRisco;
+            FlObito = 0;
+        }
     }
 }

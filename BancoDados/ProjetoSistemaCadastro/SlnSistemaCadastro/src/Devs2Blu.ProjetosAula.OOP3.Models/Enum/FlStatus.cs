@@ -9,6 +9,6 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Models.Enum
         [Description("Ativo")]
         A = 1,
         [Description("Inativo")]
-        I = 2,
+        I = 2
     }
 }
