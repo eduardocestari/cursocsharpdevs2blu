@@ -10,10 +10,10 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms.Data
     public class ConvenioRepository
     {
         
-        public MySqlDataReader FetchAll()
+        /*public MySqlDataReader FetchAll()
         {
 
-        }
+        }*/
 
         #region SQLs
         private const String SQL_SELECT_CONVENIO = "SELECT * FROM convenio";
