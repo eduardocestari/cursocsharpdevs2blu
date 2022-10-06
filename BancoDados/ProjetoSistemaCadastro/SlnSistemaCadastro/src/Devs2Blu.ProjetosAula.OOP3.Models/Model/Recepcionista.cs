@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace Devs2Blu.ProjetosAula.SistemaCadastro.Models.Model
 {
-    public class Recepcionista : Pessoa
+    public class Recepcionista //: Pessoa
     {
         public Int32 Id { get; set; }
         public String Setor { get; set; }
 
         public Recepcionista()
         {
-            TipoPessoa = TipoPessoa.PF;
+            //TipoPessoa = TipoPessoa.PF;
         }
     }
 }
