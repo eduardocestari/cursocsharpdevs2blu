@@ -43,13 +43,11 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms
         private void PopulaComboConvenio()
         {
             var listConvenio = ConvenioRepository.FetchAll();
+            cboConvenio.DataSource = new BindingSource(listConvenio, null);
+            cboConvenio.DisplayMember = "nome";
+            cboConvenio.ValueMember = "id";
 
-            while (listConvenio.Read())
-            {
-
-                cboConvenio.Items.Add(listConvenio.GetString("nome"));
-
-            }
+                        
         }
 
         #endregion
@@ -60,6 +58,7 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms
             {
                 lblCGCCPF.Text = "CPF";
                 lblCGCCPF.Visible = true;
+                txtCGCCPF.Visible = true;
             }
         }
 
@@ -69,7 +68,18 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms
             {
                 lblCGCCPF.Text = "CNPJ";
                 lblCGCCPF.Visible = true;
+                txtCGCCPF.Visible = true;
             }
+        }
+
+        private void txtNome_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboConvenio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
