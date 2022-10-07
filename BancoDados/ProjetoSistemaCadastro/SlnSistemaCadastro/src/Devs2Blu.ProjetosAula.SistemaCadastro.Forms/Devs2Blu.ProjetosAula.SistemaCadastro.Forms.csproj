@@ -90,9 +90,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Infomração.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\salvar.jpg" />
   </ItemGroup>
   <ItemGroup>
