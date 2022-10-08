@@ -44,7 +44,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtCGCCPF = new System.Windows.Forms.TextBox();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.lblCGCCPF = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -64,6 +63,7 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.txtCGCCPF = new System.Windows.Forms.MaskedTextBox();
             this.gpFormCadastro.SuspendLayout();
             this.gpEnderecoCadastro.SuspendLayout();
             this.gpTipoPessoa.SuspendLayout();
@@ -75,9 +75,9 @@
             // 
             // gpFormCadastro
             // 
+            this.gpFormCadastro.Controls.Add(this.txtCGCCPF);
             this.gpFormCadastro.Controls.Add(this.btnLimpar);
             this.gpFormCadastro.Controls.Add(this.gpEnderecoCadastro);
-            this.gpFormCadastro.Controls.Add(this.txtCGCCPF);
             this.gpFormCadastro.Controls.Add(this.txtNome);
             this.gpFormCadastro.Controls.Add(this.lblCGCCPF);
             this.gpFormCadastro.Controls.Add(this.label2);
@@ -100,6 +100,7 @@
             this.btnLimpar.TabIndex = 14;
             this.btnLimpar.Text = "Limpar";
             this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // gpEnderecoCadastro
             // 
@@ -233,20 +234,12 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "CEP";
             // 
-            // txtCGCCPF
-            // 
-            this.txtCGCCPF.Location = new System.Drawing.Point(63, 45);
-            this.txtCGCCPF.Name = "txtCGCCPF";
-            this.txtCGCCPF.Size = new System.Drawing.Size(120, 20);
-            this.txtCGCCPF.TabIndex = 11;
-            // 
             // txtNome
             // 
             this.txtNome.Location = new System.Drawing.Point(63, 19);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(287, 20);
             this.txtNome.TabIndex = 10;
-            this.txtNome.TextChanged += new System.EventHandler(this.txtNome_TextChanged);
             // 
             // lblCGCCPF
             // 
@@ -309,7 +302,6 @@
             this.cboConvenio.Name = "cboConvenio";
             this.cboConvenio.Size = new System.Drawing.Size(120, 21);
             this.cboConvenio.TabIndex = 3;
-            this.cboConvenio.SelectedIndexChanged += new System.EventHandler(this.cboConvenio_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -340,6 +332,7 @@
             this.btnSalvar.Size = new System.Drawing.Size(90, 76);
             this.btnSalvar.TabIndex = 2;
             this.btnSalvar.UseVisualStyleBackColor = false;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // btnExcluir
             // 
@@ -367,7 +360,7 @@
             this.gpConteudo.Controls.Add(this.gridPacientes);
             this.gpConteudo.Location = new System.Drawing.Point(400, 31);
             this.gpConteudo.Name = "gpConteudo";
-            this.gpConteudo.Size = new System.Drawing.Size(379, 326);
+            this.gpConteudo.Size = new System.Drawing.Size(379, 332);
             this.gpConteudo.TabIndex = 8;
             this.gpConteudo.TabStop = false;
             // 
@@ -379,17 +372,18 @@
             this.gridPacientes.Location = new System.Drawing.Point(6, 19);
             this.gridPacientes.Name = "gridPacientes";
             this.gridPacientes.ReadOnly = true;
-            this.gridPacientes.Size = new System.Drawing.Size(368, 301);
+            this.gridPacientes.Size = new System.Drawing.Size(368, 307);
             this.gridPacientes.TabIndex = 0;
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(814, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(798, 24);
             this.menuStrip1.TabIndex = 9;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -421,11 +415,19 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "About";
             // 
+            // txtCGCCPF
+            // 
+            this.txtCGCCPF.Location = new System.Drawing.Point(63, 45);
+            this.txtCGCCPF.Mask = "000.000.000-00";
+            this.txtCGCCPF.Name = "txtCGCCPF";
+            this.txtCGCCPF.Size = new System.Drawing.Size(120, 20);
+            this.txtCGCCPF.TabIndex = 15;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(814, 478);
+            this.ClientSize = new System.Drawing.Size(798, 478);
             this.Controls.Add(this.gpConteudo);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.panel1);
@@ -460,7 +462,6 @@
         private System.Windows.Forms.Label lblCGCCPF;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox gpEnderecoCadastro;
-        private System.Windows.Forms.TextBox txtCGCCPF;
         private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
@@ -486,6 +487,7 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.MaskedTextBox txtCGCCPF;
     }
 }
 
