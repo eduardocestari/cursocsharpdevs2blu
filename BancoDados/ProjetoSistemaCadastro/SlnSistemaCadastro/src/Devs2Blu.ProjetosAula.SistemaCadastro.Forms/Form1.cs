@@ -86,16 +86,55 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms
 
         }
 
-        private String ValidaFormCadastro()
+        private bool ValidaFormCadastro()
         {
-            if (txtNome.Text.Equals("")) return "O campo nome é obrigatório";
-            if (txtCGCCPF.Text.Equals("")) return "O campo de documento é obrigatório";
-            if (cboConvenio.Text.Equals("")) return "O campo convenio é obrigatório";
-            if (txtCidade.Text.Equals("")) return "O campo cidade é obrigatório";
-            if (txtBairro.Text.Equals("")) return "O campo bairro é obrigatório";
-            if (txtRua.Text.Equals("")) return "O campo rua é obrigatório";
-            if (txtNumero.Text.Equals("")) return "O campo numero é obrigatório";
-            return "";
+            if (txtNome.Text.Equals(""))
+            {
+                MessageBox.Show("Campo Obrigatório - Nome!");
+                return false;
+            }
+            if (txtCGCCPF.Text.Equals(""))
+            {
+                MessageBox.Show("Campo Obrigatório - CPF!");
+                return false;
+            }
+            if (cboConvenio.SelectedIndex == -1)
+            {
+                MessageBox.Show("Campo Obrigatório - Convenio!");
+                return false;
+            }
+            if (mskCEP.Text.Equals(""))
+            {
+                MessageBox.Show("Campo Obrigatório - CEP!");
+                return false;
+            }
+            if (cboUF.SelectedIndex == -1)
+            {
+                MessageBox.Show("Campo Obrigatório - UF!");
+                return false;
+            }
+            if (txtCidade.Text.Equals(""))
+            {
+                MessageBox.Show("Campo Obrigatório - Cidade!");
+                return false;
+            }
+            if (txtRua.Text.Equals(""))
+            {
+                MessageBox.Show("Campo Obrigatório - Rua!");
+                return false;
+            }
+            if (txtNumero.Text.Equals(""))
+            {
+                MessageBox.Show("Campo Obrigatório - Numero!");
+                return false;
+            }
+            if (txtBairro.Text.Equals(""))
+            {
+                MessageBox.Show("Campo Obrigatório - Bairro!");
+                return false;
+            }
+
+            return true;
         }
 
         #endregion
@@ -123,8 +162,9 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms
         }
 
         private void btnSalvar_Click(object sender, EventArgs e) 
-        { 
-            if (ValidaFormCadastro().Equals(""))
+        {
+
+            if (ValidaFormCadastro())
             {
 
                 Pessoa pessoa = new Pessoa();
