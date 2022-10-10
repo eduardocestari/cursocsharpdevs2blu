@@ -2,6 +2,7 @@
 using Devs2Blu.ProjetosAula.SistemaCadastro.Models.Enum;
 using Devs2Blu.ProjetosAula.SistemaCadastro.Models.Model;
 using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI.Relational;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,7 +23,7 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms
         public PacienteRepository PacienteRepository = new PacienteRepository();
         public EnderecoRepository EnderecoRepository = new EnderecoRepository();
 
-        
+
 
         public Form1()
         {
@@ -161,7 +162,7 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms
             }
         }
 
-        private void btnSalvar_Click(object sender, EventArgs e) 
+        private void btnSalvar_Click(object sender, EventArgs e)
         {
 
             if (ValidaFormCadastro())
@@ -169,7 +170,7 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms
 
                 Pessoa pessoa = new Pessoa();
                 pessoa.Nome = txtNome.Text;
-                pessoa.CGCCPF = txtCGCCPF.Text.Replace(',', '.');              
+                pessoa.CGCCPF = txtCGCCPF.Text.Replace(',', '.');
 
                 Paciente paciente = new Paciente();
                 Convenio convenio = new Convenio();
@@ -177,7 +178,7 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms
                 paciente.NrProntuario = Int32.Parse(txtNumeroProntuario.Text);
                 paciente.PacienteRisco = txtPacienteRisco.Text;
 
-                var pacienteResult = PacienteRepository.Save(pessoa,paciente, convenio);
+                var pacienteResult = PacienteRepository.Save(pessoa, paciente, convenio);
                 Endereco endereco = new Endereco(pessoa, mskCEP.Text.Replace(',', '.'), txtRua.Text, Int32.Parse(txtNumero.Text), txtBairro.Text, txtCidade.Text, cboUF.Text);
                 EnderecoRepository.SalveEndereco(endereco);
 
@@ -188,7 +189,7 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms
                     LimpaForms();
                 }
             }
-        
+
         }
 
         private void btnInfo_Click(object sender, EventArgs e)
@@ -222,6 +223,17 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms
             PopulaDataGridPessoa();
         }
 
+        private void btnAlterar_Click(object sender, EventArgs e)
+        {
+            Pessoa pessoa = new Pessoa();
+            pessoa.Id = int.Parse(gridPacientes.CurrentRow.Cells[0].Value.ToString());
+            pessoa.Nome = txtNome.Text;
+            pessoa.CGCCPF = txtCGCCPF.Text.Replace(',', '.');
+            PacienteRepository.Update(pessoa);
+            PopulaDataGridPessoa();
+
+        }
+
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Sistema de Cadastro Hospitalar Versão 1.0");
@@ -237,7 +249,38 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms
             LimpaForms();
         }
 
+        private void gridPacientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            /*DataGridViewRow row = gridPacientes.Rows[e.RowIndex];
+            txtNome.Text = row.Cells["nome"].Value.ToString();
+            txtCGCCPF.Text = row.Cells["CPF"].Value.ToString();
+            mskCEP.Text = row.Cells["cep"].Value.ToString();
+            cboUF.Text = row.Cells["Estado"].Value.ToString();
+            txtCidade.Text = row.Cells["cidade"].Value.ToString();
+            txtRua.Text = row.Cells["rua"].Value.ToString();
+            txtNumero.Text = row.Cells["Número"].Value.ToString();
+            txtBairro.Text = row.Cells["bairro"].Value.ToString();
+            cboConvenio.SelectedValue = row.Cells["Convênio"].Selected;
+            txtNumeroProntuario.Text = row.Cells["Prontuário"].Value.ToString();
+            txtPacienteRisco.Text = row.Cells["Risco"].Value.ToString();*/
+            Paciente paciente = new Paciente();
 
+            paciente.Pessoa.Id = int.Parse(gridPacientes.CurrentRow.Cells[0].Value.ToString());
+
+            txtNome.Text = gridPacientes.CurrentRow.Cells[1].Value.ToString();
+            txtCGCCPF.Text = gridPacientes.CurrentRow.Cells[2].Value.ToString();
+            cboConvenio.Text = gridPacientes.CurrentRow.Cells[6].Value.ToString();
+            mskCEP.Text = gridPacientes.CurrentRow.Cells[7].Value.ToString();
+            txtRua.Text = gridPacientes.CurrentRow.Cells[8].Value.ToString();
+            txtNumero.Text = gridPacientes.CurrentRow.Cells[9].Value.ToString();
+            txtBairro.Text = gridPacientes.CurrentRow.Cells[10].Value.ToString();
+            txtCidade.Text = gridPacientes.CurrentRow.Cells[11].Value.ToString();
+            cboUF.Text = gridPacientes.CurrentRow.Cells[12].Value.ToString();
+            txtNumeroProntuario.Text = gridPacientes.CurrentRow.Cells[4].Value.ToString();
+            txtPacienteRisco.Text = gridPacientes.CurrentRow.Cells[5].Value.ToString(); 
+        }
+
+      
         #endregion
     }
 }

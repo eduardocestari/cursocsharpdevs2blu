@@ -117,7 +117,7 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms.Data
             {
                 MySqlConnection conn = ConnectionMySQL.GetConnection();
                 MySqlCommand cmd = new MySqlCommand(SQL_DELETE_PACIENTE, conn);
-                cmd.Parameters.Add("@id", MySqlDbType.Int32).Value = pessoa.Id;
+                //cmd.Parameters.Add("@id", MySqlDbType.Int32).Value = ;
 
                 cmd.ExecuteNonQuery();
                 return true;
@@ -136,10 +136,28 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms.Data
             {
                 MySqlConnection conn = ConnectionMySQL.GetConnection();
                 MySqlCommand cmd = new MySqlCommand(SQL_UPDATE_PESSOA, conn);
+                cmd.Parameters.Add("@id", MySqlDbType.Int32).Value = pessoa.Id;
                 cmd.Parameters.Add("@nome", MySqlDbType.VarChar, 45).Value = pessoa.Nome;
                 cmd.Parameters.Add("@cgccpf", MySqlDbType.VarChar, 25).Value = pessoa.CGCCPF;
                 cmd.Parameters.Add("@tipopessoa", MySqlDbType.Enum).Value = pessoa.TipoPessoa;
-                cmd.Parameters.Add("@id", MySqlDbType.Int32).Value = pessoa.Id;
+                
+
+                cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException myExc)
+            {
+                MessageBox.Show(myExc.Message, "Erro de MySQL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+        }
+
+        public void UpdatePaciente(Paciente paciente)
+        {
+            try
+            {
+                MySqlConnection conn = ConnectionMySQL.GetConnection();
+                MySqlCommand cmd = new MySqlCommand(SQL_UPDATE_Paciente, conn);
+                //cmd.Parameters.Add("@id", MySqlDbType.Int32).Value = ;
 
                 cmd.ExecuteNonQuery();
             }
@@ -181,29 +199,33 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms.Data
         private const String SQL_SELECT_PESSOA = @"Select id, nome, cgccpf, flstatus from pessoa";
         private const String SQL_SELECT_PACIENTE = @"SELECT id_pessoa, id_convenio, numero_prontuario, paciente_risco, flstatus, flobito FROM paciente";
         private const String SQL_SELECT_GRID = @"SELECT p.id as Código, 
-	   p.nome Nome, 
-       cgccpf CPF, 
-       p.flstatus Status, 
-       pa.numero_prontuario Prontuário, 
-       pa.paciente_risco as Risco, 
-       (select nome from convenio where id = pa.id_convenio) Convênio, 
-       e.CEP, 
-       Rua, 
-       numero as Número, 
-       Bairro
-       Cidade, 
-       UF as Estado		
-        FROM pessoa p 
-        LEFT JOIN endereco e ON p.id = e.id_pessoa
-        LEFT JOIN paciente pa ON p.id = pa.id_pessoa";
+	                                                               p.nome Nome, 
+                                                                   cgccpf CPF, 
+                                                                   p.flstatus Status, 
+                                                                   pa.numero_prontuario Prontuário, 
+                                                                   pa.paciente_risco as Risco, 
+                                                                   (select nome from convenio where id = pa.id_convenio) Convênio, 
+                                                                   e.CEP, 
+                                                                   Rua, 
+                                                                   numero as Número, 
+                                                                   Bairro,
+                                                                   Cidade, 
+                                                                   UF as Estado		
+                                                                    FROM pessoa p 
+                                                                    LEFT JOIN endereco e ON p.id = e.id_pessoa
+                                                                    LEFT JOIN paciente pa ON p.id = pa.id_pessoa";
 
         private const String SQL_UPDATE_PESSOA = @"UPDATE pessoa
                                                                 SET
                                                                 nome = @nome,
                                                                 cgccpf = @cgccpf,
-                                                                tipopessoa = @tipopessoa,
+                                                                tipopessoa = @tipopessoa
                                                                 WHERE id = @id;";
 
+        private const String SQL_UPDATE_Paciente = @"UPDATE paciente
+                                                                SET
+                                                                id_convenio = @convenio,
+                                                                WHERE id_pessoa = @id;";
         private const String SQL_DELETE_PACIENTE = @"DELETE FROM paciente WHERE id_pessoa = @id ";
         private const String SQL_DELETE_PESSOA = @"DELETE FROM pessoa WHERE id = @id ";
         #endregion

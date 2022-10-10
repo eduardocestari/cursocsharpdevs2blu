@@ -30,6 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.gpFormCadastro = new System.Windows.Forms.GroupBox();
+            this.txtPacienteRisco = new System.Windows.Forms.TextBox();
+            this.lbRiscoPaciente = new System.Windows.Forms.Label();
+            this.txtNumeroProntuario = new System.Windows.Forms.TextBox();
+            this.lbProntuário = new System.Windows.Forms.Label();
             this.txtCGCCPF = new System.Windows.Forms.MaskedTextBox();
             this.gpEnderecoCadastro = new System.Windows.Forms.GroupBox();
             this.mskCEP = new System.Windows.Forms.MaskedTextBox();
@@ -53,7 +57,9 @@
             this.cboConvenio = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnClear = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
+            this.btnExcluir = new System.Windows.Forms.Button();
             this.gpConteudo = new System.Windows.Forms.GroupBox();
             this.gridPacientes = new System.Windows.Forms.DataGridView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -61,12 +67,7 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lbProntuário = new System.Windows.Forms.Label();
-            this.txtNumeroProntuario = new System.Windows.Forms.TextBox();
-            this.lbRiscoPaciente = new System.Windows.Forms.Label();
-            this.txtPacienteRisco = new System.Windows.Forms.TextBox();
-            this.btnClear = new System.Windows.Forms.Button();
-            this.btnExcluir = new System.Windows.Forms.Button();
+            this.btnAlterar = new System.Windows.Forms.Button();
             this.gpFormCadastro.SuspendLayout();
             this.gpEnderecoCadastro.SuspendLayout();
             this.gpTipoPessoa.SuspendLayout();
@@ -96,6 +97,38 @@
             this.gpFormCadastro.TabIndex = 4;
             this.gpFormCadastro.TabStop = false;
             this.gpFormCadastro.Text = "Formulário de Cadastro";
+            // 
+            // txtPacienteRisco
+            // 
+            this.txtPacienteRisco.Location = new System.Drawing.Point(265, 94);
+            this.txtPacienteRisco.Name = "txtPacienteRisco";
+            this.txtPacienteRisco.Size = new System.Drawing.Size(89, 20);
+            this.txtPacienteRisco.TabIndex = 50;
+            // 
+            // lbRiscoPaciente
+            // 
+            this.lbRiscoPaciente.AutoSize = true;
+            this.lbRiscoPaciente.Location = new System.Drawing.Point(187, 100);
+            this.lbRiscoPaciente.Name = "lbRiscoPaciente";
+            this.lbRiscoPaciente.Size = new System.Drawing.Size(79, 13);
+            this.lbRiscoPaciente.TabIndex = 18;
+            this.lbRiscoPaciente.Text = "Risco Paciente";
+            // 
+            // txtNumeroProntuario
+            // 
+            this.txtNumeroProntuario.Location = new System.Drawing.Point(265, 70);
+            this.txtNumeroProntuario.Name = "txtNumeroProntuario";
+            this.txtNumeroProntuario.Size = new System.Drawing.Size(89, 20);
+            this.txtNumeroProntuario.TabIndex = 40;
+            // 
+            // lbProntuário
+            // 
+            this.lbProntuário.AutoSize = true;
+            this.lbProntuário.Location = new System.Drawing.Point(187, 77);
+            this.lbProntuário.Name = "lbProntuário";
+            this.lbProntuário.Size = new System.Drawing.Size(72, 13);
+            this.lbProntuário.TabIndex = 16;
+            this.lbProntuário.Text = "Nr. Prontuário";
             // 
             // txtCGCCPF
             // 
@@ -318,6 +351,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.panel1.Controls.Add(this.btnAlterar);
             this.panel1.Controls.Add(this.btnClear);
             this.panel1.Controls.Add(this.btnSalvar);
             this.panel1.Controls.Add(this.btnExcluir);
@@ -326,16 +360,38 @@
             this.panel1.Size = new System.Drawing.Size(526, 87);
             this.panel1.TabIndex = 7;
             // 
+            // btnClear
+            // 
+            this.btnClear.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClear.BackgroundImage")));
+            this.btnClear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnClear.Location = new System.Drawing.Point(433, 5);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(90, 76);
+            this.btnClear.TabIndex = 150;
+            this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
             // btnSalvar
             // 
             this.btnSalvar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSalvar.BackgroundImage")));
             this.btnSalvar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSalvar.Location = new System.Drawing.Point(241, 5);
+            this.btnSalvar.Location = new System.Drawing.Point(144, 4);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(90, 76);
             this.btnSalvar.TabIndex = 130;
             this.btnSalvar.UseVisualStyleBackColor = false;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
+            // 
+            // btnExcluir
+            // 
+            this.btnExcluir.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExcluir.BackgroundImage")));
+            this.btnExcluir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnExcluir.Location = new System.Drawing.Point(337, 4);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(90, 76);
+            this.btnExcluir.TabIndex = 140;
+            this.btnExcluir.UseVisualStyleBackColor = false;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // gpConteudo
             // 
@@ -358,6 +414,7 @@
             this.gridPacientes.ReadOnly = true;
             this.gridPacientes.Size = new System.Drawing.Size(1252, 211);
             this.gridPacientes.TabIndex = 0;
+            this.gridPacientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridPacientes_CellContentClick);
             // 
             // menuStrip1
             // 
@@ -382,7 +439,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(93, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -397,63 +454,20 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
-            // lbProntuário
+            // btnAlterar
             // 
-            this.lbProntuário.AutoSize = true;
-            this.lbProntuário.Location = new System.Drawing.Point(187, 77);
-            this.lbProntuário.Name = "lbProntuário";
-            this.lbProntuário.Size = new System.Drawing.Size(72, 13);
-            this.lbProntuário.TabIndex = 16;
-            this.lbProntuário.Text = "Nr. Prontuário";
-            // 
-            // txtNumeroProntuario
-            // 
-            this.txtNumeroProntuario.Location = new System.Drawing.Point(265, 70);
-            this.txtNumeroProntuario.Name = "txtNumeroProntuario";
-            this.txtNumeroProntuario.Size = new System.Drawing.Size(89, 20);
-            this.txtNumeroProntuario.TabIndex = 40;
-            // 
-            // lbRiscoPaciente
-            // 
-            this.lbRiscoPaciente.AutoSize = true;
-            this.lbRiscoPaciente.Location = new System.Drawing.Point(187, 100);
-            this.lbRiscoPaciente.Name = "lbRiscoPaciente";
-            this.lbRiscoPaciente.Size = new System.Drawing.Size(79, 13);
-            this.lbRiscoPaciente.TabIndex = 18;
-            this.lbRiscoPaciente.Text = "Risco Paciente";
-            // 
-            // txtPacienteRisco
-            // 
-            this.txtPacienteRisco.Location = new System.Drawing.Point(265, 94);
-            this.txtPacienteRisco.Name = "txtPacienteRisco";
-            this.txtPacienteRisco.Size = new System.Drawing.Size(89, 20);
-            this.txtPacienteRisco.TabIndex = 50;
-            // 
-            // btnClear
-            // 
-            this.btnClear.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClear.BackgroundImage")));
-            this.btnClear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnClear.Location = new System.Drawing.Point(433, 5);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(90, 76);
-            this.btnClear.TabIndex = 150;
-            this.btnClear.UseVisualStyleBackColor = false;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-            // 
-            // btnExcluir
-            // 
-            this.btnExcluir.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExcluir.BackgroundImage")));
-            this.btnExcluir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnExcluir.Location = new System.Drawing.Point(337, 4);
-            this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(90, 76);
-            this.btnExcluir.TabIndex = 140;
-            this.btnExcluir.UseVisualStyleBackColor = false;
-            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
+            this.btnAlterar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAlterar.BackgroundImage")));
+            this.btnAlterar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAlterar.Location = new System.Drawing.Point(240, 5);
+            this.btnAlterar.Name = "btnAlterar";
+            this.btnAlterar.Size = new System.Drawing.Size(90, 76);
+            this.btnAlterar.TabIndex = 151;
+            this.btnAlterar.UseVisualStyleBackColor = false;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
             // Form1
             // 
@@ -523,6 +537,7 @@
         private System.Windows.Forms.TextBox txtNumeroProntuario;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnExcluir;
+        private System.Windows.Forms.Button btnAlterar;
     }
 }
 
