@@ -1,4 +1,5 @@
 ﻿using Devs2Blu.ProjetosAula.SistemaCadastro.Forms.Data;
+using Devs2Blu.ProjetosAula.SistemaCadastro.Models.Enum;
 using Devs2Blu.ProjetosAula.SistemaCadastro.Models.Model;
 using MySql.Data.MySqlClient;
 using System;
@@ -17,9 +18,9 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms
     public partial class Form1 : Form
     {
         public MySqlConnection Conn { get; set; }
-
         public ConvenioRepository ConvenioRepository = new ConvenioRepository();
         public PacienteRepository PacienteRepository = new PacienteRepository();
+        public EnderecoRepository EnderecoRepository = new EnderecoRepository();
 
         
 
@@ -34,6 +35,7 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms
         {
             PopulaComboConvenio();
             PopulaDataGridPessoa();
+            txtNome.Focus();
 
         }
 
@@ -49,6 +51,34 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms
 
         }
 
+        private void LimpaForms()
+        {
+            txtNome.Text = "";
+            txtCGCCPF.Text = "";
+
+            if (lblCGCCPF.Text == "CPF")
+            {
+                txtCGCCPF.Mask = "000.000.000-00";
+            }
+            else if (lblCGCCPF.Text == "CNPJ")
+            {
+                txtCGCCPF.Mask = "00.000.000/000-00";
+            }
+
+            cboConvenio.SelectedValue = 0;
+
+            mskCEP.Text = "";
+            mskCEP.Mask = "00.000-000";
+            txtRua.Text = "";
+            txtNumero.Text = "";
+            txtBairro.Text = "";
+            txtCidade.Text = "";
+            cboUF.Text = "";
+
+            txtNumeroProntuario.Text = "";
+            txtPacienteRisco.Text = "";
+        }
+
         private void PopulaDataGridPessoa()
         {
             var listPessoas = PacienteRepository.GetPessoas();
@@ -56,28 +86,17 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms
 
         }
 
-        private bool ValidaFormCadastro()
+        private String ValidaFormCadastro()
         {
-            if (txtNome.Text.Equals(""))
-                return false;
-            if (txtCGCCPF.Text.Equals(""))
-                return false;
-            /*if (txtBairro.Text.Equals(""))
-                return false;
-            if (txtCidade.Text.Equals(""))
-                return false;
-            if (txtNumero.Text.Equals(""))
-                return false;
-            if (txtRua.Text.Equals(""))
-                return false;
-            if (mskCEP.Text.Equals(""))
-                return false;
-            if (cboConvenio.SelectedIndex == -1)
-                return false;
-            if (cboUF.SelectedIndex == -1)
-                return false;*/
-
-            return true;
+            if (txtNome.Text.Equals("")) return "O campo nome é obrigatório";
+            if (txtCGCCPF.Text.Equals("")) return "O campo de documento é obrigatório";
+            if (cboConvenio.Text.Equals("")) return "O campo convenio é obrigatório";
+            if (txtCidade.Text.Equals("")) return "O campo cidade é obrigatório";
+            if (txtBairro.Text.Equals("")) return "O campo bairro é obrigatório";
+            if (txtRua.Text.Equals("")) return "O campo rua é obrigatório";
+            if (txtNumero.Text.Equals("")) return "O campo numero é obrigatório";
+            if (!(rdFisica.Checked || rdJuridica.Checked)) return "Selecione o tipo de usuário";
+            return "";
         }
 
         #endregion
@@ -89,6 +108,7 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms
                 lblCGCCPF.Text = "CPF";
                 lblCGCCPF.Visible = true;
                 txtCGCCPF.Visible = true;
+                //txtCGCCPF.Mask = "___.___.___-__";
             }
         }
 
@@ -99,38 +119,86 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms
                 lblCGCCPF.Text = "CNPJ";
                 lblCGCCPF.Visible = true;
                 txtCGCCPF.Visible = true;
+                //txtCGCCPF.Mask = "__.___.___/____-__";
             }
         }
 
         private void btnSalvar_Click(object sender, EventArgs e) 
         { 
-            if (ValidaFormCadastro())
+            if (ValidaFormCadastro().Equals(""))
             {
+
+                Pessoa pessoa = new Pessoa();
+                pessoa.Nome = txtNome.Text;
+                pessoa.CGCCPF = txtCGCCPF.Text.Replace(',', '.');              
+
                 Paciente paciente = new Paciente();
-                paciente.Pessoa.Nome = txtNome.Text;
-                paciente.Pessoa.CGCCPF = txtCGCCPF.Text.Replace(',','.');
-                paciente.Convenio.Id = (int) cboConvenio.SelectedValue;
-                MessageBox.Show($"Convenio {paciente.Convenio.Id}");
+                Convenio convenio = new Convenio();
+                convenio.Id = (int)cboConvenio.SelectedValue;
+                paciente.NrProntuario = Int32.Parse(txtNumeroProntuario.Text);
+                paciente.PacienteRisco = txtPacienteRisco.Text;
 
-                var pacienteResult = PacienteRepository.Salve(paciente);
-                if (pacienteResult.Pessoa.Id > 0)
+                var pacienteResult = PacienteRepository.Salve(pessoa,paciente, convenio);
+                Endereco endereco = new Endereco(pessoa, mskCEP.Text.Replace(',', '.'), txtRua.Text, Int32.Parse(txtNumero.Text), txtBairro.Text, txtCidade.Text, cboUF.Text);
+                EnderecoRepository.SalveEndereco(endereco);
+
+                if (pacienteResult.Id > 0)
                 {
-                    MessageBox.Show($"Pessoa {paciente.Pessoa.Id} - {paciente.Pessoa.Nome} salva com sucesso!", "Adicionar Pessoa", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show($"Pessoa {pessoa.Id} - {pessoa.Nome} salva com sucesso!", "Adicionar Pessoa", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     PopulaDataGridPessoa();
+                    LimpaForms();
                 }
-
             }
         
         }
 
-        private void btnLimpar_Click(object sender, EventArgs e)
+        private void btnInfo_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("Sistema de Cadastro Hospitalar Versão 1.0");
         }
 
-        #endregion
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            Pessoa pessoa = new Pessoa();
+            pessoa.Id = (int)gridPacientes.CurrentRow.Cells[0].Value;
+            if (PacienteRepository.Delete(pessoa))
+            {
+                MessageBox.Show("Paciente apagado com sucesso", "Deletar paciente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                DialogResult = MessageBox.Show("Paciente possui informações salvas no banco, deseja apagar mesmo assim?", "Deletar Paciente", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (DialogResult == DialogResult.Yes)
+                {
+                    pessoa.Id = (int)gridPacientes.CurrentRow.Cells[0].Value;
+                    EnderecoRepository.DeletePessoa(pessoa.Id);
+                    PacienteRepository.DeletePaciente(pessoa);
+                    PacienteRepository.Delete(pessoa);
+                }
+                else
+                {
+                    Close();
+                }
+            }
+            PopulaDataGridPessoa();
+        }
 
-        
-       
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Sistema de Cadastro Hospitalar Versão 1.0");
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            LimpaForms();
+        }
+
+
+        #endregion
     }
 }
