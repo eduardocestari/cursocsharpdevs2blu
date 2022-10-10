@@ -95,7 +95,6 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms
             if (txtBairro.Text.Equals("")) return "O campo bairro é obrigatório";
             if (txtRua.Text.Equals("")) return "O campo rua é obrigatório";
             if (txtNumero.Text.Equals("")) return "O campo numero é obrigatório";
-            if (!(rdFisica.Checked || rdJuridica.Checked)) return "Selecione o tipo de usuário";
             return "";
         }
 
