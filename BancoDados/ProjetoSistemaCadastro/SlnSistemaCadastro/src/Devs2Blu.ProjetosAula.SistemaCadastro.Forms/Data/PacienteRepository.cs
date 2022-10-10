@@ -12,7 +12,7 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms.Data
 {
     public class PacienteRepository
     {
-        public Pessoa Salve(Pessoa pessoa, Paciente paciente, Convenio convenio)
+        public Pessoa Save(Pessoa pessoa, Paciente paciente, Convenio convenio)
         {
             MySqlConnection conn = ConnectionMySQL.GetConnection();
 

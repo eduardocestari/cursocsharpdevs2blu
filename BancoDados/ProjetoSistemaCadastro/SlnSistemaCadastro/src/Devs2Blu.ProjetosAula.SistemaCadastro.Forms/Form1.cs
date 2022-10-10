@@ -108,7 +108,7 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms
                 MessageBox.Show("Campo Obrigatório - CEP!");
                 return false;
             }
-            if (cboUF.SelectedIndex == -1)
+            if (cboUF.Text.Equals(""))
             {
                 MessageBox.Show("Campo Obrigatório - UF!");
                 return false;
@@ -177,7 +177,7 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms
                 paciente.NrProntuario = Int32.Parse(txtNumeroProntuario.Text);
                 paciente.PacienteRisco = txtPacienteRisco.Text;
 
-                var pacienteResult = PacienteRepository.Salve(pessoa,paciente, convenio);
+                var pacienteResult = PacienteRepository.Save(pessoa,paciente, convenio);
                 Endereco endereco = new Endereco(pessoa, mskCEP.Text.Replace(',', '.'), txtRua.Text, Int32.Parse(txtNumero.Text), txtBairro.Text, txtCidade.Text, cboUF.Text);
                 EnderecoRepository.SalveEndereco(endereco);
 
