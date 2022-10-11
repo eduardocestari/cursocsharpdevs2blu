@@ -57,6 +57,7 @@
             this.cboConvenio = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnAlterar = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
@@ -67,7 +68,6 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnAlterar = new System.Windows.Forms.Button();
             this.gpFormCadastro.SuspendLayout();
             this.gpEnderecoCadastro.SuspendLayout();
             this.gpTipoPessoa.SuspendLayout();
@@ -101,6 +101,7 @@
             // txtPacienteRisco
             // 
             this.txtPacienteRisco.Location = new System.Drawing.Point(265, 94);
+            this.txtPacienteRisco.MaxLength = 5;
             this.txtPacienteRisco.Name = "txtPacienteRisco";
             this.txtPacienteRisco.Size = new System.Drawing.Size(89, 20);
             this.txtPacienteRisco.TabIndex = 50;
@@ -118,6 +119,7 @@
             // 
             this.txtNumeroProntuario.Location = new System.Drawing.Point(265, 70);
             this.txtNumeroProntuario.Name = "txtNumeroProntuario";
+            this.txtNumeroProntuario.ReadOnly = true;
             this.txtNumeroProntuario.Size = new System.Drawing.Size(89, 20);
             this.txtNumeroProntuario.TabIndex = 40;
             // 
@@ -360,6 +362,17 @@
             this.panel1.Size = new System.Drawing.Size(526, 87);
             this.panel1.TabIndex = 7;
             // 
+            // btnAlterar
+            // 
+            this.btnAlterar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAlterar.BackgroundImage")));
+            this.btnAlterar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAlterar.Location = new System.Drawing.Point(240, 5);
+            this.btnAlterar.Name = "btnAlterar";
+            this.btnAlterar.Size = new System.Drawing.Size(90, 76);
+            this.btnAlterar.TabIndex = 151;
+            this.btnAlterar.UseVisualStyleBackColor = false;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
+            // 
             // btnClear
             // 
             this.btnClear.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClear.BackgroundImage")));
@@ -457,17 +470,6 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
-            // 
-            // btnAlterar
-            // 
-            this.btnAlterar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAlterar.BackgroundImage")));
-            this.btnAlterar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAlterar.Location = new System.Drawing.Point(240, 5);
-            this.btnAlterar.Name = "btnAlterar";
-            this.btnAlterar.Size = new System.Drawing.Size(90, 76);
-            this.btnAlterar.TabIndex = 151;
-            this.btnAlterar.UseVisualStyleBackColor = false;
-            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
             // Form1
             // 

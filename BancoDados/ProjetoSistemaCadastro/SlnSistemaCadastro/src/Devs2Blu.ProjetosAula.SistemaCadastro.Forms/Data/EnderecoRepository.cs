@@ -34,21 +34,20 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms.Data
             }
         }
 
-        public void Update(Endereco endereco)
+        public void Update(Pessoa pessoa, Endereco endereco)
         {
+            MySqlConnection conn = ConnectionMySQL.GetConnection();
             try
             {
-                MySqlConnection conn = ConnectionMySQL.GetConnection();
+                
                 MySqlCommand cmd = new MySqlCommand(SQL_UPDATE_ENDERECO, conn);
-                cmd.Parameters.Add("@idPessoa", MySqlDbType.Int32).Value = endereco.Pessoa.Id;
+                cmd.Parameters.Add("@id_pessoa", MySqlDbType.Int32).Value = pessoa.Id;
                 cmd.Parameters.Add("@CEP", MySqlDbType.VarChar, 15).Value = endereco.CEP;
                 cmd.Parameters.Add("@rua", MySqlDbType.VarChar, 45).Value = endereco.Rua;
                 cmd.Parameters.Add("@numero", MySqlDbType.Int32).Value = endereco.Numero;
                 cmd.Parameters.Add("@bairro", MySqlDbType.VarChar, 45).Value = endereco.Bairro;
                 cmd.Parameters.Add("@cidade", MySqlDbType.VarChar, 45).Value = endereco.Cidade;
                 cmd.Parameters.Add("@uf", MySqlDbType.VarChar, 2).Value = endereco.UF;
-
-                cmd.Parameters.Add("@id", MySqlDbType.Int32).Value = endereco.Id;
 
                 cmd.ExecuteNonQuery();
             }
@@ -74,7 +73,6 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms.Data
                 MessageBox.Show(myExc.Message, "Erro de MySQL", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
             }
-            // DataSet data = new DataSet();
         }
 
         public void Delete(Endereco endereco)
@@ -136,14 +134,13 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms.Data
 
         private const String SQL_UPDATE_ENDERECO = @"UPDATE endereco
                                                             SET
-                                                            id_pessoa = @id_pessoa,
                                                             CEP = @CEP,
                                                             rua = @rua,
                                                             numero = @numero,
                                                             bairro = @bairro,
                                                             cidade = @cidade,
                                                             uf = @uf
-                                                            WHERE id = @id";
+                                                            WHERE id_pessoa = @id_pessoa";
 
         private const String SQL_DELETE_ENDERECO = @"DELETE FROM endereco WHERE id_pessoa = @id ";
         private const String SQL_DELETE_PESSOA = @"DELETE FROM endereco WHERE id_pessoa = @id_pessoa ";

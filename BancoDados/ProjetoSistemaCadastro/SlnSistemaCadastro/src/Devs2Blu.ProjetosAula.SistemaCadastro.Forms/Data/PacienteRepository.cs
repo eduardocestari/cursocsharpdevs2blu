@@ -117,7 +117,7 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms.Data
             {
                 MySqlConnection conn = ConnectionMySQL.GetConnection();
                 MySqlCommand cmd = new MySqlCommand(SQL_DELETE_PACIENTE, conn);
-                //cmd.Parameters.Add("@id", MySqlDbType.Int32).Value = ;
+                cmd.Parameters.Add("@id", MySqlDbType.Int32).Value = pessoa.Id;
 
                 cmd.ExecuteNonQuery();
                 return true;
@@ -151,13 +151,17 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms.Data
             }
         }
 
-        public void UpdatePaciente(Paciente paciente)
+        public void UpdatePaciente(Paciente paciente, Convenio convenio)
         {
+            MySqlConnection conn = ConnectionMySQL.GetConnection();
             try
             {
-                MySqlConnection conn = ConnectionMySQL.GetConnection();
+                
                 MySqlCommand cmd = new MySqlCommand(SQL_UPDATE_Paciente, conn);
-                //cmd.Parameters.Add("@id", MySqlDbType.Int32).Value = ;
+                cmd.Parameters.Add("@id_pessoa", MySqlDbType.Int32).Value = paciente.Pessoa.Id;
+                cmd.Parameters.Add("@id_convenio", MySqlDbType.Int32).Value = convenio.Id;
+                //cmd.Parameters.Add("@numero_prontuario", MySqlDbType.Enum).Value = paciente.NrProntuario;
+                cmd.Parameters.Add("@paciente_risco", MySqlDbType.VarChar, 5).Value = paciente.PacienteRisco;
 
                 cmd.ExecuteNonQuery();
             }
@@ -221,12 +225,15 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms.Data
                                                                 cgccpf = @cgccpf,
                                                                 tipopessoa = @tipopessoa
                                                                 WHERE id = @id;";
-
+        
         private const String SQL_UPDATE_Paciente = @"UPDATE paciente
                                                                 SET
-                                                                id_convenio = @convenio,
-                                                                WHERE id_pessoa = @id;";
+                                                                paciente_risco     = @paciente_risco,
+                                                                id_convenio = @id_convenio
+                                                                WHERE id_pessoa = @id_pessoa;";
+
         private const String SQL_DELETE_PACIENTE = @"DELETE FROM paciente WHERE id_pessoa = @id ";
+
         private const String SQL_DELETE_PESSOA = @"DELETE FROM pessoa WHERE id = @id ";
         #endregion
     }

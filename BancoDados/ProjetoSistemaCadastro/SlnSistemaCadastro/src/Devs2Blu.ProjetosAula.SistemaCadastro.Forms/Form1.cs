@@ -24,7 +24,6 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms
         public EnderecoRepository EnderecoRepository = new EnderecoRepository();
 
 
-
         public Form1()
         {
             InitializeComponent();
@@ -48,8 +47,6 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms
             cboConvenio.DataSource = new BindingSource(listConvenio, null);
             cboConvenio.DisplayMember = "nome";
             cboConvenio.ValueMember = "id";
-
-
         }
 
         private void LimpaForms()
@@ -147,7 +144,6 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms
                 lblCGCCPF.Text = "CPF";
                 lblCGCCPF.Visible = true;
                 txtCGCCPF.Visible = true;
-                //txtCGCCPF.Mask = "___.___.___-__";
             }
         }
 
@@ -158,7 +154,6 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms
                 lblCGCCPF.Text = "CNPJ";
                 lblCGCCPF.Visible = true;
                 txtCGCCPF.Visible = true;
-                //txtCGCCPF.Mask = "__.___.___/____-__";
             }
         }
 
@@ -167,7 +162,7 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms
 
             if (ValidaFormCadastro())
             {
-
+                Random rd = new Random();
                 Pessoa pessoa = new Pessoa();
                 pessoa.Nome = txtNome.Text;
                 pessoa.CGCCPF = txtCGCCPF.Text.Replace(',', '.');
@@ -175,7 +170,7 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms
                 Paciente paciente = new Paciente();
                 Convenio convenio = new Convenio();
                 convenio.Id = (int)cboConvenio.SelectedValue;
-                paciente.NrProntuario = Int32.Parse(txtNumeroProntuario.Text);
+                paciente.NrProntuario = rd.Next(10000, 99999); //Int32.Parse(txtNumeroProntuario.Text);
                 paciente.PacienteRisco = txtPacienteRisco.Text;
 
                 var pacienteResult = PacienteRepository.Save(pessoa, paciente, convenio);
@@ -226,11 +221,37 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms
         private void btnAlterar_Click(object sender, EventArgs e)
         {
             Pessoa pessoa = new Pessoa();
+            Paciente paciente = new Paciente();
+            Endereco endereco = new Endereco();
+
             pessoa.Id = int.Parse(gridPacientes.CurrentRow.Cells[0].Value.ToString());
             pessoa.Nome = txtNome.Text;
             pessoa.CGCCPF = txtCGCCPF.Text.Replace(',', '.');
             PacienteRepository.Update(pessoa);
-            PopulaDataGridPessoa();
+
+            
+            paciente.Pessoa.Id = int.Parse(gridPacientes.CurrentRow.Cells[0].Value.ToString());
+            //paciente.NrProntuario = Int32.Parse(txtNumeroProntuario.Text);
+            paciente.PacienteRisco = txtPacienteRisco.Text;
+            Convenio convenio = new Convenio();
+            convenio.Id = (int)cboConvenio.SelectedValue;
+            PacienteRepository.UpdatePaciente(paciente, convenio);
+
+            pessoa.Id = int.Parse(gridPacientes.CurrentRow.Cells[0].Value.ToString());
+            endereco.CEP = mskCEP.Text.Replace(',', '.');
+            endereco.Rua = txtRua.Text;
+            endereco.Numero = Int32.Parse(txtNumero.Text);
+            endereco.Bairro = txtBairro.Text;
+            endereco.Cidade = txtCidade.Text;
+            endereco.UF = cboUF.Text;
+            EnderecoRepository.Update(pessoa, endereco);
+
+            if(pessoa.Id > 0)
+            {
+                MessageBox.Show("Paciente alterado com sucesso", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                PopulaDataGridPessoa();
+            }
+            
 
         }
 
@@ -251,18 +272,6 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms
 
         private void gridPacientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            /*DataGridViewRow row = gridPacientes.Rows[e.RowIndex];
-            txtNome.Text = row.Cells["nome"].Value.ToString();
-            txtCGCCPF.Text = row.Cells["CPF"].Value.ToString();
-            mskCEP.Text = row.Cells["cep"].Value.ToString();
-            cboUF.Text = row.Cells["Estado"].Value.ToString();
-            txtCidade.Text = row.Cells["cidade"].Value.ToString();
-            txtRua.Text = row.Cells["rua"].Value.ToString();
-            txtNumero.Text = row.Cells["Número"].Value.ToString();
-            txtBairro.Text = row.Cells["bairro"].Value.ToString();
-            cboConvenio.SelectedValue = row.Cells["Convênio"].Selected;
-            txtNumeroProntuario.Text = row.Cells["Prontuário"].Value.ToString();
-            txtPacienteRisco.Text = row.Cells["Risco"].Value.ToString();*/
             Paciente paciente = new Paciente();
 
             paciente.Pessoa.Id = int.Parse(gridPacientes.CurrentRow.Cells[0].Value.ToString());
