@@ -257,7 +257,7 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Sistema de Cadastro Hospitalar Versão 1.0");
+            MessageBox.Show("Sistema de Cadastro Hospitalar Versão 1.0 \n\n Grupo 6 - Eduardo Cestari, Eduardo Xavier, Jair, Mateus, Guilherme");
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
