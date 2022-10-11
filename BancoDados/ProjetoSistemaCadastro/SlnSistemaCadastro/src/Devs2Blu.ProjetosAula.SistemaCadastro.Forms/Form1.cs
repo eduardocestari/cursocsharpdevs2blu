@@ -251,8 +251,6 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms
                 MessageBox.Show("Paciente alterado com sucesso", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 PopulaDataGridPessoa();
             }
-            
-
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -273,9 +271,7 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms
         private void gridPacientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             Paciente paciente = new Paciente();
-
             paciente.Pessoa.Id = int.Parse(gridPacientes.CurrentRow.Cells[0].Value.ToString());
-
             txtNome.Text = gridPacientes.CurrentRow.Cells[1].Value.ToString();
             txtCGCCPF.Text = gridPacientes.CurrentRow.Cells[2].Value.ToString();
             cboConvenio.Text = gridPacientes.CurrentRow.Cells[6].Value.ToString();
