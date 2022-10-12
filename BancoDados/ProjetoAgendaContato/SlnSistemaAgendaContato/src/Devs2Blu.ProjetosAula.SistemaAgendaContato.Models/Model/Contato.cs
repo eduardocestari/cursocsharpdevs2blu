@@ -10,8 +10,10 @@ namespace Devs2Blu.ProjetosAula.SistemaAgendaContato.Models.Model
     public class Contato
     {
         public Int32 Id { get; set; }
-        public Contato contato { get; set; }    
-        public Estado Sigla { get; set; }
+        public Contato contato { get; set; }
+
+        //public Estado Sigla { get; set; }
+        public String Sigla { get; set; }
         public String Nome { get; set; }
         public String Celular { get; set; }
         public String Email { get; set; }
@@ -22,7 +24,7 @@ namespace Devs2Blu.ProjetosAula.SistemaAgendaContato.Models.Model
 
         }
 
-        public Contato(int id, Contato contato, Estado sigla, string nome, string celular, string email)
+        public Contato(int id, Contato contato, string sigla, string nome, string celular, string email)
         {
             Id = id;
             this.contato = contato;

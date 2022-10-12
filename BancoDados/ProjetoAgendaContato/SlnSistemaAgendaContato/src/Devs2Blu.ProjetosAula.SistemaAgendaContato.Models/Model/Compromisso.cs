@@ -11,25 +11,27 @@ namespace Devs2Blu.ProjetosAula.SistemaAgendaContato.Models.Model
     public class Compromisso
     {
         public Int32 Id { get; set; }
-        public Contato contato { get; set; }    
-        public DateTime data { get; set; }
-        public String Celular { get; set; }
-        public String Status { get; set; }
-        public DiasSemana DiasSemana {get; set; }
-
+        public Contato contato { get; set; }
+        public String Titulo { get; set; }
+        public String Descricao { get; set; }
+        public DateTime dataini { get; set; }
+        public DateTime datafim { get; set; }
+        public StatusCompromisso Status { get; set; }
 
         public Compromisso()
         {
-            Status = "A";
+            Status = StatusCompromisso.A;
         }
-        public Compromisso(int id, Contato contato, DateTime data, string celular, string status, DiasSemana diasSemana)
+
+        public Compromisso(int id, Contato contato, string titulo, string descricao, DateTime dataini, DateTime datafim, StatusCompromisso status)
         {
             Id = id;
             this.contato = contato;
-            this.data = data;
-            Celular = celular;
+            Titulo = titulo;
+            Descricao = descricao;
+            this.dataini = dataini;
+            this.datafim = datafim;
             Status = status;
-            DiasSemana = diasSemana;
         }
     }
 }

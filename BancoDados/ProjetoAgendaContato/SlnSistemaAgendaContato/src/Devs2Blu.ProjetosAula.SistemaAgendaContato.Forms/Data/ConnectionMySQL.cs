@@ -24,7 +24,7 @@ namespace Devs2Blu.ProjetosAula.SistemaAgendaContato.Forms.Data
         public static MySqlConnection GetConnection()
         {
             Server = "localhost";
-            DataBase = "agenda_contatos";
+            DataBase = "agendacontato";
             User = "root";
             Password = "root";
             ConnectionString = $"Persist Security Info=False;server={Server};database={DataBase};uid={User};server={Server};database={DataBase};uid={User};pwd='{Password}'";

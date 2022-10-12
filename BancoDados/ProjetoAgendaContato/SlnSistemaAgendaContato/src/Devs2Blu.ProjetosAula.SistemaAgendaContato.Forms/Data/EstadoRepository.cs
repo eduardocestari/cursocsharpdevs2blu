@@ -13,7 +13,6 @@ namespace Devs2Blu.ProjetosAula.SistemaAgendaContato.Forms.Data
         public MySqlDataReader FetchAll()
         {
             MySqlConnection conn = ConnectionMySQL.GetConnection();
-            //DataSet dataSet = new DataSet();
             try
             {
                 MySqlCommand cmd = new MySqlCommand(SQL_SELECT_ESTADO, conn);
