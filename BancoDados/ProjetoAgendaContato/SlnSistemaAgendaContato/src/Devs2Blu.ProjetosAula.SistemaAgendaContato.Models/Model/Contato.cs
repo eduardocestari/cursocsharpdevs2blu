@@ -11,8 +11,6 @@ namespace Devs2Blu.ProjetosAula.SistemaAgendaContato.Models.Model
     {
         public Int32 Id { get; set; }
         public Contato contato { get; set; }
-
-        //public Estado Sigla { get; set; }
         public String Sigla { get; set; }
         public String Nome { get; set; }
         public String Celular { get; set; }

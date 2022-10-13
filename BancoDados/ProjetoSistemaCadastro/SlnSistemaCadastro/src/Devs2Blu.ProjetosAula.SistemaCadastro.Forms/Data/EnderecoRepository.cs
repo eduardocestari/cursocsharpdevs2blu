@@ -145,7 +145,7 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms.Data
         private const String SQL_DELETE_ENDERECO = @"DELETE FROM endereco WHERE id_pessoa = @id ";
         private const String SQL_DELETE_PESSOA = @"DELETE FROM endereco WHERE id_pessoa = @id_pessoa ";
 
-        #endregion
+        
 
     }
 }

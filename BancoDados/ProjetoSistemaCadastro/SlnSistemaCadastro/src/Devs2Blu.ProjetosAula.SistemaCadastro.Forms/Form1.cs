@@ -285,7 +285,7 @@ namespace Devs2Blu.ProjetosAula.SistemaCadastro.Forms
             txtPacienteRisco.Text = gridPacientes.CurrentRow.Cells[5].Value.ToString(); 
         }
 
-      
+
         #endregion
     }
 }

@@ -11,7 +11,7 @@ namespace Devs2Blu.ProjetosAula.SistemaAgendaContato.Models.Model
     public class Compromisso
     {
         public Int32 Id { get; set; }
-        public Contato contato { get; set; }
+        public Contato Contato { get; set; }
         public String Titulo { get; set; }
         public String Descricao { get; set; }
         public DateTime dataini { get; set; }
@@ -26,7 +26,7 @@ namespace Devs2Blu.ProjetosAula.SistemaAgendaContato.Models.Model
         public Compromisso(int id, Contato contato, string titulo, string descricao, DateTime dataini, DateTime datafim, StatusCompromisso status)
         {
             Id = id;
-            this.contato = contato;
+            this.Contato = contato;
             Titulo = titulo;
             Descricao = descricao;
             this.dataini = dataini;
