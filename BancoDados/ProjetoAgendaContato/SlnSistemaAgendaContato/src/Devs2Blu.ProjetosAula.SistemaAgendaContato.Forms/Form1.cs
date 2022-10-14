@@ -60,7 +60,7 @@ namespace Devs2Blu.ProjetosAula.SistemaAgendaContato.Forms
             PopulaComboEstado();
             LoadStatusCompromisso();
             PopulaDataGrid();
-            
+
 
         }
         private void PopulaComboEstado()
@@ -125,14 +125,15 @@ namespace Devs2Blu.ProjetosAula.SistemaAgendaContato.Forms
             }
         }
 
-        private const String SQL_SELECT_GRID = @"select id Código, Nome, Celular, email 'E-mail', UF 
-from contato";
+        private const String SQL_SELECT_GRID = @"select id Código, Nome, Celular, email 'E-mail', UF from contato";
+        
         private const String SQL_SELECT_GRID2 = @"select cp.id 'Código', c.Nome Contato, Titulo 'Título', dataini 'De', datafim 'Até', 
             case Status when 'A' then 'Ativo'
 			when 'I' then 'Inativo'
             when 'C' then 'Concluído'
             when 'R' then 'Remarcado' end Status,
             Descricao 'Observação' from compromisso cp, contato c where cp.id_contato = c.id";
+       
         private const String SQL_SELECT_GRID3 = @"select cp.id 'Código', c.Nome Contato, Titulo 'Título', dataini 'De', datafim 'Até', 
             case Status when 'A' then 'Ativo'
 			when 'I' then 'Inativo'
@@ -143,8 +144,8 @@ from contato";
 
         private void PopulaDataGrid()
         {
-            var listContatos =  GetContatos();
-            gridContato.DataSource = new BindingSource(listContatos, null);           
+            var listContatos = GetContatos();
+            gridContato.DataSource = new BindingSource(listContatos, null);
 
         }
         private void PopulaDataGrid2()
@@ -156,23 +157,19 @@ from contato";
 
         public void gridContato_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            Contato contato = new Contato();
-            contato.Id = int.Parse(gridContato.CurrentRow.Cells[0].Value.ToString());
-            txtNome.Text = gridContato.CurrentRow.Cells[1].Value.ToString();
-            txtCelular.Text = gridContato.CurrentRow.Cells[2].Value.ToString();
-            txtEmail.Text = gridContato.CurrentRow.Cells[3].Value.ToString();
-            cboEstado.Text = gridContato.CurrentRow.Cells[4].Value.ToString();
-            PopulaDataGrid2();
+            
         }
         private void gridCompromissos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             Compromisso compromisso = new Compromisso();
             compromisso.Id = int.Parse(gridCompromissos.CurrentRow.Cells[0].Value.ToString());
+            txtCdCompromisso.Text = gridCompromissos.CurrentRow.Cells[0].Value.ToString();
             txtTitulo.Text = gridCompromissos.CurrentRow.Cells[2].Value.ToString();
             dtDataIni.Text = gridCompromissos.CurrentRow.Cells[3].Value.ToString();
             dtDataFim.Text = gridCompromissos.CurrentRow.Cells[4].Value.ToString();
             cboStatus.Text = gridCompromissos.CurrentRow.Cells[5].Value.ToString();
             txtDescricao.Text = gridCompromissos.CurrentRow.Cells[6].Value.ToString();
+            
         }
 
         private void btnSalvarContato_Click(object sender, EventArgs e)
@@ -202,7 +199,7 @@ from contato";
             PopulaDataGrid2();
             LimpaForms();
         }
-        
+
         private void btnAlterarContato_Click(object sender, EventArgs e)
         {
             Contato contato = new Contato();
@@ -253,7 +250,20 @@ from contato";
             txtEmail.Text = "";
             txtDescricao.Text = "";
             txtTitulo.Text = "";
-            
+
+        }
+
+        private void gridContato_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Contato contato = new Contato();
+            contato.Id = int.Parse(gridContato.CurrentRow.Cells[0].Value.ToString());
+            txtCdContato.Text = gridContato.CurrentRow.Cells[0].Value.ToString();
+            txtNome.Text = gridContato.CurrentRow.Cells[1].Value.ToString();
+            txtCelular.Text = gridContato.CurrentRow.Cells[2].Value.ToString();
+            txtEmail.Text = gridContato.CurrentRow.Cells[3].Value.ToString();
+            cboEstado.Text = gridContato.CurrentRow.Cells[4].Value.ToString();
+
+            PopulaDataGrid2();
         }
     }
 }
