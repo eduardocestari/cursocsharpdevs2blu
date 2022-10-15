@@ -1,6 +1,7 @@
 ﻿using Devs2Blu.ProjetosAula.SistemaAgendaContato.Forms.Data;
 using Devs2Blu.ProjetosAula.SistemaAgendaContato.Models.Enum;
 using Devs2Blu.ProjetosAula.SistemaAgendaContato.Models.Model;
+using EnumsNET;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections;
@@ -9,6 +10,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Data;
 using System.Data.Common;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Net;
@@ -16,12 +18,13 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.AxHost;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Devs2Blu.ProjetosAula.SistemaAgendaContato.Forms
 {
     public partial class FormAgendaContato : Form
     {
-
         public MySqlConnection Conn { get; set; }
         public EstadoRepository EstadoRepository = new EstadoRepository();
         public ContatoRepository ContatoRepository = new ContatoRepository();
@@ -31,38 +34,18 @@ namespace Devs2Blu.ProjetosAula.SistemaAgendaContato.Forms
             InitializeComponent();
         }
 
-        public static IList<T> EnumStatusCompromisso<T>()
+        private void PopulaStatusCompromisso()
         {
-            if (!typeof(T).IsEnum)
-                throw new Exception("T isn't an enumerated type");
-
-            IList<T> list = new List<T>();
-            Type type = typeof(T);
-            if (type != null)
-            {
-                Array enumValues = Enum.GetValues(type);
-                foreach (T value in enumValues)
-                {
-                    list.Add(value);
-                }
-            }
-            return list;
-        }
-
-        private void LoadStatusCompromisso()
-        {
-
-            this.cboStatus.DataSource = EnumStatusCompromisso<StatusCompromisso>();
+            this.cboStatus.DataSource = Enums.GetMembers<StatusCompromisso>().Select(x => x.AsString(EnumFormat.Description)).ToList();
         }
         private void FormContato_Load(object sender, EventArgs e)
         {
             txtNome.Focus();
             PopulaComboEstado();
-            LoadStatusCompromisso();
+            PopulaStatusCompromisso();
             PopulaDataGrid();
-
-
         }
+
         private void PopulaComboEstado()
         {
             var listEstado = EstadoRepository.FetchAll();
@@ -88,59 +71,37 @@ namespace Devs2Blu.ProjetosAula.SistemaAgendaContato.Forms
 
             }
         }
-        public object GetCompromissos()
+        public object GetCompromissos(int contatoId)
         {
             MySqlConnection conn = ConnectionMySQL.GetConnection();
             try
             {
 
-                MySqlCommand cmd = new MySqlCommand(SQL_SELECT_GRID2, conn);
+                MySqlCommand cmd = new MySqlCommand(SQL_SELECT_GRID3, conn);
+                cmd.Parameters.Add("@id_contato", MySqlDbType.Int32).Value = contatoId;
                 MySqlDataReader dataReader = cmd.ExecuteReader();
+                if (!dataReader.HasRows)
+                    return null;
                 return dataReader;
             }
             catch (MySqlException myeExc)
             {
                 MessageBox.Show(myeExc.Message, "Erro de MySQL", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
-
-
-            }
-        }
-        public object GetCompromissos2() //INATIVO
-        {
-            MySqlConnection conn = ConnectionMySQL.GetConnection();
-            try
-            {
-                MySqlCommand cmd = new MySqlCommand(SQL_SELECT_GRID3, conn);
-                Contato contato = new Contato();
-
-                cmd.Parameters.Add("@id_contato", MySqlDbType.VarChar, 15).Value = contato.Id;
-                MySqlDataReader dataReader = cmd.ExecuteReader();
-                return dataReader;
-            }
-            catch (MySqlException myExc)
-            {
-                MessageBox.Show(myExc.Message, "Erro de MySQL", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                throw;
             }
         }
 
+        #region SQL
         private const String SQL_SELECT_GRID = @"select id Código, Nome, Celular, email 'E-mail', UF from contato";
-        
-        private const String SQL_SELECT_GRID2 = @"select cp.id 'Código', c.Nome Contato, Titulo 'Título', dataini 'De', datafim 'Até', 
-            case Status when 'A' then 'Ativo'
-			when 'I' then 'Inativo'
-            when 'C' then 'Concluído'
-            when 'R' then 'Remarcado' end Status,
-            Descricao 'Observação' from compromisso cp, contato c where cp.id_contato = c.id";
-       
+               
         private const String SQL_SELECT_GRID3 = @"select cp.id 'Código', c.Nome Contato, Titulo 'Título', dataini 'De', datafim 'Até', 
             case Status when 'A' then 'Ativo'
 			when 'I' then 'Inativo'
             when 'C' then 'Concluído'
             when 'R' then 'Remarcado' end Status,
-            Descricao 'Observação' from compromisso cp, contato c where cp.id_contato = c.id
-            where id_contato = @id_contato";
+            Descricao 'Observação' from compromisso cp, contato c where cp.id_contato = c.id and id_contato = @id_contato";
+
+        #endregion
 
         private void PopulaDataGrid()
         {
@@ -148,11 +109,12 @@ namespace Devs2Blu.ProjetosAula.SistemaAgendaContato.Forms
             gridContato.DataSource = new BindingSource(listContatos, null);
 
         }
-        private void PopulaDataGrid2()
+        private void PopulaDataGrid2(int contatoId)
         {
-            var listCompromissos = GetCompromissos();
-            gridCompromissos.DataSource = new BindingSource(listCompromissos, null);
-
+            gridCompromissos.Rows.Clear();
+            var listCompromissos = GetCompromissos(contatoId);
+            if (listCompromissos != null)
+                gridCompromissos.DataSource = new BindingSource(listCompromissos, null);
         }
 
         public void gridContato_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -161,15 +123,7 @@ namespace Devs2Blu.ProjetosAula.SistemaAgendaContato.Forms
         }
         private void gridCompromissos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            Compromisso compromisso = new Compromisso();
-            compromisso.Id = int.Parse(gridCompromissos.CurrentRow.Cells[0].Value.ToString());
-            txtCdCompromisso.Text = gridCompromissos.CurrentRow.Cells[0].Value.ToString();
-            txtTitulo.Text = gridCompromissos.CurrentRow.Cells[2].Value.ToString();
-            dtDataIni.Text = gridCompromissos.CurrentRow.Cells[3].Value.ToString();
-            dtDataFim.Text = gridCompromissos.CurrentRow.Cells[4].Value.ToString();
-            cboStatus.Text = gridCompromissos.CurrentRow.Cells[5].Value.ToString();
-            txtDescricao.Text = gridCompromissos.CurrentRow.Cells[6].Value.ToString();
-            
+                        
         }
 
         private void btnSalvarContato_Click(object sender, EventArgs e)
@@ -194,9 +148,10 @@ namespace Devs2Blu.ProjetosAula.SistemaAgendaContato.Forms
             compromisso.Descricao = txtDescricao.Text;
             compromisso.dataini = dtDataIni.Value;
             compromisso.datafim = dtDataFim.Value;
-            compromisso.Status = (StatusCompromisso)this.cboStatus.SelectedItem;
+            compromisso.Status = EnumHelper.GetValueFromDescription<StatusCompromisso>((string)cboStatus.SelectedItem);
+
             CompromissoRepository.SaveCompromisso(compromisso);
-            PopulaDataGrid2();
+            PopulaDataGrid2(contato.Id);
             LimpaForms();
         }
 
@@ -231,15 +186,16 @@ namespace Devs2Blu.ProjetosAula.SistemaAgendaContato.Forms
 
         private void btnAlterarCompromisso_Click(object sender, EventArgs e)
         {
+            int contatoId = int.Parse(gridContato.CurrentRow.Cells[0].Value.ToString());
             Compromisso compromisso = new Compromisso();
             compromisso.Id = int.Parse(gridCompromissos.CurrentRow.Cells[0].Value.ToString());
             compromisso.Titulo = txtTitulo.Text;
             compromisso.Descricao = txtDescricao.Text;
             compromisso.dataini = dtDataIni.Value;
             compromisso.datafim = dtDataFim.Value;
-            compromisso.Status = (StatusCompromisso)this.cboStatus.SelectedItem;
+            compromisso.Status = EnumHelper.GetValueFromDescription<StatusCompromisso>((string)cboStatus.SelectedItem);
             CompromissoRepository.Update(compromisso);
-            PopulaDataGrid2();
+            PopulaDataGrid2(contatoId);
             LimpaForms();
         }
 
@@ -255,15 +211,60 @@ namespace Devs2Blu.ProjetosAula.SistemaAgendaContato.Forms
 
         private void gridContato_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            Contato contato = new Contato();
-            contato.Id = int.Parse(gridContato.CurrentRow.Cells[0].Value.ToString());
+        }
+
+        private void gridCompromissos_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+        }
+
+        private void gridContato_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            int contatoId = int.Parse(gridContato.CurrentRow.Cells[0].Value.ToString());
+            PopulaDataGrid2(contatoId);
+        }
+
+        private void gridContato_SelectionChanged(object sender, EventArgs e)
+        {
+            if (gridContato.CurrentRow == null)
+                return;
+
+            int contatoId = int.Parse(gridContato.CurrentRow.Cells[0].Value.ToString());
+
             txtCdContato.Text = gridContato.CurrentRow.Cells[0].Value.ToString();
             txtNome.Text = gridContato.CurrentRow.Cells[1].Value.ToString();
             txtCelular.Text = gridContato.CurrentRow.Cells[2].Value.ToString();
             txtEmail.Text = gridContato.CurrentRow.Cells[3].Value.ToString();
             cboEstado.Text = gridContato.CurrentRow.Cells[4].Value.ToString();
+            PopulaDataGrid2(contatoId);
+        }
 
-            PopulaDataGrid2();
+        private void gridCompromissos_SelectionChanged(object sender, EventArgs e)
+        {
+            if (gridCompromissos.CurrentRow == null)
+                return;
+
+            Compromisso compromisso = new Compromisso();
+            compromisso.Id = int.Parse(gridCompromissos.CurrentRow.Cells[0].Value.ToString());
+            txtCdCompromisso.Text = gridCompromissos.CurrentRow.Cells[0].Value.ToString();
+            txtTitulo.Text = gridCompromissos.CurrentRow.Cells[2].Value.ToString();
+            DateTime data;
+            if (DateTime.TryParse(gridCompromissos.CurrentRow.Cells[3].Value.ToString(), out data))
+                dtDataIni.Value = data;
+            if (DateTime.TryParse(gridCompromissos.CurrentRow.Cells[4].Value.ToString(), out data))
+                dtDataFim.Value = data;
+            cboStatus.Text = gridCompromissos.CurrentRow.Cells[5].Value.ToString();
+            txtDescricao.Text = gridCompromissos.CurrentRow.Cells[6].Value.ToString();          
+        }
+
+        private void form2ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form2 form2 = new Form2();
+            form2.Show();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

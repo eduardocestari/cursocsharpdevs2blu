@@ -61,12 +61,19 @@
             this.gridContato = new System.Windows.Forms.DataGridView();
             this.gpCompromissos = new System.Windows.Forms.GroupBox();
             this.gridCompromissos = new System.Windows.Forms.DataGridView();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.form2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.gbContato.SuspendLayout();
             this.gpCompromisso.SuspendLayout();
             this.gpContatos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridContato)).BeginInit();
             this.gpCompromissos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridCompromissos)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbContato
@@ -84,7 +91,7 @@
             this.gbContato.Controls.Add(this.lbNome);
             this.gbContato.Controls.Add(this.lbEstado);
             this.gbContato.Controls.Add(this.cboEstado);
-            this.gbContato.Location = new System.Drawing.Point(12, 12);
+            this.gbContato.Location = new System.Drawing.Point(12, 32);
             this.gbContato.Name = "gbContato";
             this.gbContato.Size = new System.Drawing.Size(312, 158);
             this.gbContato.TabIndex = 2;
@@ -223,7 +230,7 @@
             this.gpCompromisso.Controls.Add(this.label3);
             this.gpCompromisso.Controls.Add(this.label4);
             this.gpCompromisso.Controls.Add(this.cboStatus);
-            this.gpCompromisso.Location = new System.Drawing.Point(16, 176);
+            this.gpCompromisso.Location = new System.Drawing.Point(16, 193);
             this.gpCompromisso.Name = "gpCompromisso";
             this.gpCompromisso.Size = new System.Drawing.Size(308, 276);
             this.gpCompromisso.TabIndex = 3;
@@ -290,6 +297,8 @@
             // 
             // dtDataFim
             // 
+            this.dtDataFim.CustomFormat = "dddd, dd MMMM yyyy HH:mm:ss";
+            this.dtDataFim.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtDataFim.Location = new System.Drawing.Point(48, 102);
             this.dtDataFim.Name = "dtDataFim";
             this.dtDataFim.Size = new System.Drawing.Size(246, 20);
@@ -297,6 +306,8 @@
             // 
             // dtDataIni
             // 
+            this.dtDataIni.CustomFormat = "dddd, dd MMMM yyyy HH:mm:ss";
+            this.dtDataIni.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtDataIni.Location = new System.Drawing.Point(48, 75);
             this.dtDataIni.Name = "dtDataIni";
             this.dtDataIni.Size = new System.Drawing.Size(245, 20);
@@ -356,7 +367,7 @@
             // gpContatos
             // 
             this.gpContatos.Controls.Add(this.gridContato);
-            this.gpContatos.Location = new System.Drawing.Point(347, 12);
+            this.gpContatos.Location = new System.Drawing.Point(347, 31);
             this.gpContatos.Name = "gpContatos";
             this.gpContatos.Size = new System.Drawing.Size(858, 226);
             this.gpContatos.TabIndex = 4;
@@ -373,13 +384,12 @@
             this.gridContato.ReadOnly = true;
             this.gridContato.Size = new System.Drawing.Size(845, 195);
             this.gridContato.TabIndex = 0;
-            this.gridContato.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridContato_CellContentClick);
-            this.gridContato.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridContato_CellContentDoubleClick);
+            this.gridContato.SelectionChanged += new System.EventHandler(this.gridContato_SelectionChanged);
             // 
             // gpCompromissos
             // 
             this.gpCompromissos.Controls.Add(this.gridCompromissos);
-            this.gpCompromissos.Location = new System.Drawing.Point(347, 244);
+            this.gpCompromissos.Location = new System.Drawing.Point(347, 265);
             this.gpCompromissos.Name = "gpCompromissos";
             this.gpCompromissos.Size = new System.Drawing.Size(858, 208);
             this.gpCompromissos.TabIndex = 5;
@@ -396,17 +406,67 @@
             this.gridCompromissos.ReadOnly = true;
             this.gridCompromissos.Size = new System.Drawing.Size(845, 183);
             this.gridCompromissos.TabIndex = 0;
-            this.gridCompromissos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridCompromissos_CellContentClick);
+            this.gridCompromissos.SelectionChanged += new System.EventHandler(this.gridCompromissos_SelectionChanged);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.aboutToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1217, 24);
+            this.menuStrip1.TabIndex = 8;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.form2ToolStripMenuItem,
+            this.exitToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // form2ToolStripMenuItem
+            // 
+            this.form2ToolStripMenuItem.Name = "form2ToolStripMenuItem";
+            this.form2ToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.form2ToolStripMenuItem.Text = "Consultar Grid Banco";
+            this.form2ToolStripMenuItem.Click += new System.EventHandler(this.form2ToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem1});
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.aboutToolStripMenuItem.Text = "Help";
+            // 
+            // aboutToolStripMenuItem1
+            // 
+            this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
+            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
+            this.aboutToolStripMenuItem1.Text = "About";
             // 
             // FormAgendaContato
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1217, 475);
+            this.ClientSize = new System.Drawing.Size(1217, 488);
             this.Controls.Add(this.gpCompromissos);
             this.Controls.Add(this.gpContatos);
             this.Controls.Add(this.gpCompromisso);
             this.Controls.Add(this.gbContato);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormAgendaContato";
             this.Text = "Sistema Agenda de Compromisso";
             this.Load += new System.EventHandler(this.FormContato_Load);
@@ -418,7 +478,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridContato)).EndInit();
             this.gpCompromissos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridCompromissos)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -457,6 +520,12 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtCdCompromisso;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem form2ToolStripMenuItem;
     }
 }
 
