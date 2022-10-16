@@ -48,6 +48,7 @@ namespace Devs2Blu.ProjetosAula.SistemaAgendaContato.Forms.Data
                 cmd.Parameters.Add("@datafim", MySqlDbType.DateTime).Value = compromisso.datafim;
                 cmd.Parameters.Add("@status", MySqlDbType.VarChar, 45).Value = compromisso.Status;
                 cmd.ExecuteNonQuery();
+                MessageBox.Show("Compromisso alterado com sucesso", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (MySqlException myExc)
             {

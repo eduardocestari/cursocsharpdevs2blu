@@ -93,7 +93,7 @@
             this.gbContato.Controls.Add(this.cboEstado);
             this.gbContato.Location = new System.Drawing.Point(12, 32);
             this.gbContato.Name = "gbContato";
-            this.gbContato.Size = new System.Drawing.Size(312, 158);
+            this.gbContato.Size = new System.Drawing.Size(329, 158);
             this.gbContato.TabIndex = 2;
             this.gbContato.TabStop = false;
             this.gbContato.Text = "Contato";
@@ -120,24 +120,24 @@
             this.txtCelular.Location = new System.Drawing.Point(188, 45);
             this.txtCelular.Mask = "(00) 00000-0000";
             this.txtCelular.Name = "txtCelular";
-            this.txtCelular.Size = new System.Drawing.Size(105, 20);
+            this.txtCelular.Size = new System.Drawing.Size(124, 20);
             this.txtCelular.TabIndex = 2;
             // 
             // btnAlterarContato
             // 
             this.btnAlterarContato.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAlterarContato.Location = new System.Drawing.Point(135, 126);
+            this.btnAlterarContato.Location = new System.Drawing.Point(80, 126);
             this.btnAlterarContato.Name = "btnAlterarContato";
-            this.btnAlterarContato.Size = new System.Drawing.Size(75, 23);
+            this.btnAlterarContato.Size = new System.Drawing.Size(70, 23);
             this.btnAlterarContato.TabIndex = 60;
-            this.btnAlterarContato.Text = "Alterar";
+            this.btnAlterarContato.Text = "Novo";
             this.btnAlterarContato.UseVisualStyleBackColor = true;
             this.btnAlterarContato.Click += new System.EventHandler(this.btnAlterarContato_Click);
             // 
             // btnExcluirContato
             // 
             this.btnExcluirContato.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExcluirContato.Location = new System.Drawing.Point(218, 126);
+            this.btnExcluirContato.Location = new System.Drawing.Point(237, 126);
             this.btnExcluirContato.Name = "btnExcluirContato";
             this.btnExcluirContato.Size = new System.Drawing.Size(75, 23);
             this.btnExcluirContato.TabIndex = 70;
@@ -148,7 +148,7 @@
             // btnSalvarContato
             // 
             this.btnSalvarContato.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSalvarContato.Location = new System.Drawing.Point(52, 126);
+            this.btnSalvarContato.Location = new System.Drawing.Point(156, 126);
             this.btnSalvarContato.Name = "btnSalvarContato";
             this.btnSalvarContato.Size = new System.Drawing.Size(75, 23);
             this.btnSalvarContato.TabIndex = 50;
@@ -160,7 +160,7 @@
             // 
             this.txtEmail.Location = new System.Drawing.Point(50, 74);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(244, 20);
+            this.txtEmail.Size = new System.Drawing.Size(262, 20);
             this.txtEmail.TabIndex = 30;
             // 
             // lbEmail
@@ -185,7 +185,7 @@
             // 
             this.txtNome.Location = new System.Drawing.Point(50, 19);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(243, 20);
+            this.txtNome.Size = new System.Drawing.Size(262, 20);
             this.txtNome.TabIndex = 1;
             // 
             // lbNome
@@ -211,7 +211,7 @@
             this.cboEstado.FormattingEnabled = true;
             this.cboEstado.Location = new System.Drawing.Point(50, 99);
             this.cboEstado.Name = "cboEstado";
-            this.cboEstado.Size = new System.Drawing.Size(244, 21);
+            this.cboEstado.Size = new System.Drawing.Size(262, 21);
             this.cboEstado.TabIndex = 40;
             // 
             // gpCompromisso
@@ -232,7 +232,7 @@
             this.gpCompromisso.Controls.Add(this.cboStatus);
             this.gpCompromisso.Location = new System.Drawing.Point(16, 193);
             this.gpCompromisso.Name = "gpCompromisso";
-            this.gpCompromisso.Size = new System.Drawing.Size(308, 276);
+            this.gpCompromisso.Size = new System.Drawing.Size(325, 276);
             this.gpCompromisso.TabIndex = 3;
             this.gpCompromisso.TabStop = false;
             this.gpCompromisso.Text = "Compromisso";
@@ -242,13 +242,13 @@
             this.txtCdCompromisso.Location = new System.Drawing.Point(48, 20);
             this.txtCdCompromisso.Name = "txtCdCompromisso";
             this.txtCdCompromisso.ReadOnly = true;
-            this.txtCdCompromisso.Size = new System.Drawing.Size(105, 20);
+            this.txtCdCompromisso.Size = new System.Drawing.Size(91, 20);
             this.txtCdCompromisso.TabIndex = 17;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(9, 24);
+            this.label6.Location = new System.Drawing.Point(5, 24);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(40, 13);
             this.label6.TabIndex = 16;
@@ -257,18 +257,18 @@
             // btnAlterarCompromisso
             // 
             this.btnAlterarCompromisso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAlterarCompromisso.Location = new System.Drawing.Point(215, 246);
+            this.btnAlterarCompromisso.Location = new System.Drawing.Point(152, 246);
             this.btnAlterarCompromisso.Name = "btnAlterarCompromisso";
             this.btnAlterarCompromisso.Size = new System.Drawing.Size(75, 23);
             this.btnAlterarCompromisso.TabIndex = 15;
-            this.btnAlterarCompromisso.Text = "Alterar";
+            this.btnAlterarCompromisso.Text = "Novo";
             this.btnAlterarCompromisso.UseVisualStyleBackColor = true;
             this.btnAlterarCompromisso.Click += new System.EventHandler(this.btnAlterarCompromisso_Click);
             // 
             // btnSalvarCompromisso
             // 
             this.btnSalvarCompromisso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSalvarCompromisso.Location = new System.Drawing.Point(136, 246);
+            this.btnSalvarCompromisso.Location = new System.Drawing.Point(233, 246);
             this.btnSalvarCompromisso.Name = "btnSalvarCompromisso";
             this.btnSalvarCompromisso.Size = new System.Drawing.Size(75, 23);
             this.btnSalvarCompromisso.TabIndex = 13;
@@ -279,7 +279,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(14, 140);
+            this.label5.Location = new System.Drawing.Point(12, 105);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 13);
             this.label5.TabIndex = 11;
@@ -289,34 +289,34 @@
             // 
             this.txtDescricao.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.txtDescricao.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.txtDescricao.Location = new System.Drawing.Point(13, 157);
+            this.txtDescricao.Location = new System.Drawing.Point(13, 124);
             this.txtDescricao.Multiline = true;
             this.txtDescricao.Name = "txtDescricao";
-            this.txtDescricao.Size = new System.Drawing.Size(280, 83);
+            this.txtDescricao.Size = new System.Drawing.Size(297, 116);
             this.txtDescricao.TabIndex = 10;
             // 
             // dtDataFim
             // 
-            this.dtDataFim.CustomFormat = "dddd, dd MMMM yyyy HH:mm:ss";
+            this.dtDataFim.CustomFormat = "dd/MM/yyyy HH:mm";
             this.dtDataFim.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtDataFim.Location = new System.Drawing.Point(48, 102);
+            this.dtDataFim.Location = new System.Drawing.Point(178, 75);
             this.dtDataFim.Name = "dtDataFim";
-            this.dtDataFim.Size = new System.Drawing.Size(246, 20);
+            this.dtDataFim.Size = new System.Drawing.Size(131, 20);
             this.dtDataFim.TabIndex = 9;
             // 
             // dtDataIni
             // 
-            this.dtDataIni.CustomFormat = "dddd, dd MMMM yyyy HH:mm:ss";
+            this.dtDataIni.CustomFormat = "dd/MM/yyyy HH:mm";
             this.dtDataIni.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtDataIni.Location = new System.Drawing.Point(48, 75);
+            this.dtDataIni.Location = new System.Drawing.Point(29, 74);
             this.dtDataIni.Name = "dtDataIni";
-            this.dtDataIni.Size = new System.Drawing.Size(245, 20);
+            this.dtDataIni.Size = new System.Drawing.Size(125, 20);
             this.dtDataIni.TabIndex = 8;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 104);
+            this.label1.Location = new System.Drawing.Point(155, 78);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(23, 13);
             this.label1.TabIndex = 7;
@@ -325,7 +325,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 80);
+            this.label2.Location = new System.Drawing.Point(8, 79);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(21, 13);
             this.label2.TabIndex = 6;
@@ -335,13 +335,13 @@
             // 
             this.txtTitulo.Location = new System.Drawing.Point(48, 47);
             this.txtTitulo.Name = "txtTitulo";
-            this.txtTitulo.Size = new System.Drawing.Size(246, 20);
+            this.txtTitulo.Size = new System.Drawing.Size(262, 20);
             this.txtTitulo.TabIndex = 5;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 51);
+            this.label3.Location = new System.Drawing.Point(5, 51);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(35, 13);
             this.label3.TabIndex = 4;
@@ -350,7 +350,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(133, 131);
+            this.label4.Location = new System.Drawing.Point(145, 27);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(37, 13);
             this.label4.TabIndex = 3;
@@ -359,7 +359,7 @@
             // cboStatus
             // 
             this.cboStatus.FormattingEnabled = true;
-            this.cboStatus.Location = new System.Drawing.Point(173, 127);
+            this.cboStatus.Location = new System.Drawing.Point(187, 21);
             this.cboStatus.Name = "cboStatus";
             this.cboStatus.Size = new System.Drawing.Size(121, 21);
             this.cboStatus.TabIndex = 2;
@@ -384,6 +384,7 @@
             this.gridContato.ReadOnly = true;
             this.gridContato.Size = new System.Drawing.Size(845, 195);
             this.gridContato.TabIndex = 0;
+            this.gridContato.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridContato_CellContentDoubleClick);
             this.gridContato.SelectionChanged += new System.EventHandler(this.gridContato_SelectionChanged);
             // 
             // gpCompromissos
@@ -406,6 +407,7 @@
             this.gridCompromissos.ReadOnly = true;
             this.gridCompromissos.Size = new System.Drawing.Size(845, 183);
             this.gridCompromissos.TabIndex = 0;
+            this.gridCompromissos.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridCompromissos_CellContentDoubleClick_1);
             this.gridCompromissos.SelectionChanged += new System.EventHandler(this.gridCompromissos_SelectionChanged);
             // 
             // menuStrip1
@@ -431,14 +433,14 @@
             // form2ToolStripMenuItem
             // 
             this.form2ToolStripMenuItem.Name = "form2ToolStripMenuItem";
-            this.form2ToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.form2ToolStripMenuItem.Text = "Consultar Grid Banco";
+            this.form2ToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.form2ToolStripMenuItem.Text = "Outro Modelo de DataReader";
             this.form2ToolStripMenuItem.Click += new System.EventHandler(this.form2ToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 

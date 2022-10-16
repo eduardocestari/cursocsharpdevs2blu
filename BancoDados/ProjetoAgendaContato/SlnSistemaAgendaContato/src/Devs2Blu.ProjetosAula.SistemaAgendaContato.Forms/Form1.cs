@@ -94,7 +94,7 @@ namespace Devs2Blu.ProjetosAula.SistemaAgendaContato.Forms
         #region SQL
         private const String SQL_SELECT_GRID = @"select id Código, Nome, Celular, email 'E-mail', UF from contato";
                
-        private const String SQL_SELECT_GRID3 = @"select cp.id 'Código', c.Nome Contato, Titulo 'Título', dataini 'De', datafim 'Até', 
+        private const String SQL_SELECT_GRID3 = @"select cp.id 'Código', Titulo 'Título', dataini 'De', datafim 'Até', 
             case Status when 'A' then 'Ativo'
 			when 'I' then 'Inativo'
             when 'C' then 'Concluído'
@@ -117,23 +117,29 @@ namespace Devs2Blu.ProjetosAula.SistemaAgendaContato.Forms
                 gridCompromissos.DataSource = new BindingSource(listCompromissos, null);
         }
 
-        public void gridContato_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-        }
-        private void gridCompromissos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-                        
-        }
-
         private void btnSalvarContato_Click(object sender, EventArgs e)
         {
+
             Contato contato = new Contato();
             contato.Nome = txtNome.Text;
             contato.Celular = txtCelular.Text;
             contato.Email = txtEmail.Text;
             contato.Sigla = (string)cboEstado.SelectedValue;
-            ContatoRepository.SaveContato(contato);
+
+            if (ValidaFormContato()) 
+            { 
+            if (txtCdContato.Text == "")
+            {
+                ContatoRepository.SaveContato(contato);
+                MessageBox.Show("Contato salvo com sucesso", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                contato.Id = int.Parse(gridContato.CurrentRow.Cells[0].Value.ToString());
+                ContatoRepository.Update(contato);
+                MessageBox.Show("Contato alterado com sucesso", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            }
             PopulaDataGrid();
             LimpaForms();
         }
@@ -150,14 +156,29 @@ namespace Devs2Blu.ProjetosAula.SistemaAgendaContato.Forms
             compromisso.datafim = dtDataFim.Value;
             compromisso.Status = EnumHelper.GetValueFromDescription<StatusCompromisso>((string)cboStatus.SelectedItem);
 
-            CompromissoRepository.SaveCompromisso(compromisso);
+            if (ValidaFormCompromisso())
+            {
+                if (txtCdCompromisso.Text == "")
+                {
+                    CompromissoRepository.SaveCompromisso(compromisso);
+                    MessageBox.Show("Compromisso salvo com sucesso", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                else
+                {
+                    compromisso.Id = int.Parse(gridCompromissos.CurrentRow.Cells[0].Value.ToString());
+                    CompromissoRepository.Update(compromisso);
+
+                }
+            }
             PopulaDataGrid2(contato.Id);
             LimpaForms();
+
         }
 
         private void btnAlterarContato_Click(object sender, EventArgs e)
         {
-            Contato contato = new Contato();
+            /*Contato contato = new Contato();
             contato.Id = int.Parse(gridContato.CurrentRow.Cells[0].Value.ToString());
             contato.Nome = txtNome.Text;
             contato.Celular = txtCelular.Text;
@@ -165,6 +186,7 @@ namespace Devs2Blu.ProjetosAula.SistemaAgendaContato.Forms
             contato.Sigla = (string)cboEstado.SelectedValue;
             ContatoRepository.Update(contato);
             PopulaDataGrid();
+            */
             LimpaForms();
         }
 
@@ -186,7 +208,7 @@ namespace Devs2Blu.ProjetosAula.SistemaAgendaContato.Forms
 
         private void btnAlterarCompromisso_Click(object sender, EventArgs e)
         {
-            int contatoId = int.Parse(gridContato.CurrentRow.Cells[0].Value.ToString());
+            /*int contatoId = int.Parse(gridContato.CurrentRow.Cells[0].Value.ToString());
             Compromisso compromisso = new Compromisso();
             compromisso.Id = int.Parse(gridCompromissos.CurrentRow.Cells[0].Value.ToString());
             compromisso.Titulo = txtTitulo.Text;
@@ -195,7 +217,7 @@ namespace Devs2Blu.ProjetosAula.SistemaAgendaContato.Forms
             compromisso.datafim = dtDataFim.Value;
             compromisso.Status = EnumHelper.GetValueFromDescription<StatusCompromisso>((string)cboStatus.SelectedItem);
             CompromissoRepository.Update(compromisso);
-            PopulaDataGrid2(contatoId);
+            PopulaDataGrid2(contatoId);*/
             LimpaForms();
         }
 
@@ -206,41 +228,26 @@ namespace Devs2Blu.ProjetosAula.SistemaAgendaContato.Forms
             txtEmail.Text = "";
             txtDescricao.Text = "";
             txtTitulo.Text = "";
+            cboEstado.Text = "";
+            txtCdContato.Text = null;
+            txtCdCompromisso.Text = null;
+            PopulaStatusCompromisso();
 
         }
 
-        private void gridContato_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-        }
-
-        private void gridCompromissos_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-        }
-
-        private void gridContato_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-            int contatoId = int.Parse(gridContato.CurrentRow.Cells[0].Value.ToString());
-            PopulaDataGrid2(contatoId);
-        }
-
+        
         private void gridContato_SelectionChanged(object sender, EventArgs e)
         {
             if (gridContato.CurrentRow == null)
                 return;
-
             int contatoId = int.Parse(gridContato.CurrentRow.Cells[0].Value.ToString());
-
-            txtCdContato.Text = gridContato.CurrentRow.Cells[0].Value.ToString();
-            txtNome.Text = gridContato.CurrentRow.Cells[1].Value.ToString();
-            txtCelular.Text = gridContato.CurrentRow.Cells[2].Value.ToString();
-            txtEmail.Text = gridContato.CurrentRow.Cells[3].Value.ToString();
-            cboEstado.Text = gridContato.CurrentRow.Cells[4].Value.ToString();
             PopulaDataGrid2(contatoId);
+            LimpaForms();
         }
 
         private void gridCompromissos_SelectionChanged(object sender, EventArgs e)
         {
-            if (gridCompromissos.CurrentRow == null)
+      /*      if (gridCompromissos.CurrentRow == null)
                 return;
 
             Compromisso compromisso = new Compromisso();
@@ -253,7 +260,7 @@ namespace Devs2Blu.ProjetosAula.SistemaAgendaContato.Forms
             if (DateTime.TryParse(gridCompromissos.CurrentRow.Cells[4].Value.ToString(), out data))
                 dtDataFim.Value = data;
             cboStatus.Text = gridCompromissos.CurrentRow.Cells[5].Value.ToString();
-            txtDescricao.Text = gridCompromissos.CurrentRow.Cells[6].Value.ToString();          
+            txtDescricao.Text = gridCompromissos.CurrentRow.Cells[6].Value.ToString();   */       
         }
 
         private void form2ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -265,6 +272,59 @@ namespace Devs2Blu.ProjetosAula.SistemaAgendaContato.Forms
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void gridCompromissos_CellContentDoubleClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            Compromisso compromisso = new Compromisso();
+            compromisso.Id = int.Parse(gridCompromissos.CurrentRow.Cells[0].Value.ToString());
+            txtCdCompromisso.Text = gridCompromissos.CurrentRow.Cells[0].Value.ToString();
+            txtTitulo.Text = gridCompromissos.CurrentRow.Cells[1].Value.ToString();
+            dtDataIni.Text = gridCompromissos.CurrentRow.Cells[2].Value.ToString();
+            dtDataFim.Text = gridCompromissos.CurrentRow.Cells[3].Value.ToString();
+            cboStatus.Text = gridCompromissos.CurrentRow.Cells[4].Value.ToString();
+            txtDescricao.Text = gridCompromissos.CurrentRow.Cells[5].Value.ToString();
+        }
+
+     
+        private void gridContato_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            Contato contato = new Contato();
+            contato.Id = int.Parse(gridContato.CurrentRow.Cells[0].Value.ToString());
+            txtCdContato.Text = gridContato.CurrentRow.Cells[0].Value.ToString();
+            txtNome.Text = gridContato.CurrentRow.Cells[1].Value.ToString();
+            txtCelular.Text = gridContato.CurrentRow.Cells[2].Value.ToString();
+            txtEmail.Text = gridContato.CurrentRow.Cells[3].Value.ToString();
+            cboEstado.Text = gridContato.CurrentRow.Cells[4].Value.ToString();
+        }
+
+        private bool ValidaFormContato()
+        {
+            if (txtNome.Text.Equals(""))
+            {
+                MessageBox.Show("Favor informar um Nome!", "Validação de Campos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtNome.Focus();
+                return false;
+            }
+            if (cboEstado.SelectedIndex.Equals(-1))
+            {
+                MessageBox.Show("Favor informar um Estado!", "Validação de Campos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cboEstado.Focus();
+                return false;
+            }
+            return true;
+        }
+
+        private bool ValidaFormCompromisso()
+        {
+            if (txtTitulo.Text.Equals(""))
+            {
+                MessageBox.Show("Favor informar um título!", "Validação de Campos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtTitulo.Focus();
+                return false;
+            }            
+            return true;
         }
     }
 }
