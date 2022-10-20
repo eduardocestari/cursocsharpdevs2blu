@@ -1,0 +1,166 @@
+@charset "UTF-8";
+
+* {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: #463c3c;
+}
+
+body {
+  width: 100vw;
+  overflow-x: hidden;
+  background-color: rgb(219, 216, 216);
+}
+
+/* Header */
+header {
+  border-bottom: 2px solid #080505;
+  width: 100vw;
+  background-color: rgb(255, 255, 255);
+}
+
+.icon {
+  padding-left: 10px;
+  line-height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+header > figure {
+  color: #463c3c;
+}
+
+header figure img {
+  width: 64px;
+  line-height: 100px;
+  color: #463c3c;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+header figure figcaption {
+  margin-left: 1em;
+  font-size: 12px;
+}
+
+/* Main */
+
+.profile-pic {
+  height: 80px;
+  display: inline-flex;
+  width: 100%;
+  position: relative;
+}
+
+.profile-pic img {
+  border-radius: 50%;
+  position: absolute;
+  width: 6rem;
+}
+
+.wrapper {
+  display: block;
+  width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3em;
+  margin-bottom: 3em;
+}
+
+.content-top {
+  padding-bottom: 30px;
+  display: flex;
+  margin: auto;
+  align-items: center;
+  border-bottom: 1px solid #463c3c;
+  width: 100%;
+}
+
+.about-me {
+  color: #463c3c;
+  font-size: 15px;
+}
+
+a:link {
+  text-decoration: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+a:visited {
+  text-decoration: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.profile-description {
+  text-align: center;
+  margin: auto;
+  width: 100%;
+}
+
+div.content {
+  padding: 0.5em;
+  text-align: justify;
+  margin-top: 1em;
+}
+
+div.content p {
+  text-align: justify;
+}
+
+.content-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  padding-top: 25px;
+}
+
+.certificate-name {
+  padding-top: 10px;
+  text-align: left;
+  font-weight: bold;
+  font-size: 18px;
+  padding-bottom: 10px;
+  /* border-bottom: 1px solid #463c3c; */
+  display: flex;
+  text-indent: 10px;
+}
+
+.certificate-company {
+  font-weight: normal;
+}
+
+.certificate-name,
+.certificate-company {
+  background-color: rgb(255, 255, 255);
+  color: #463c3c;
+}
+
+.certificate-description {
+  padding-top: 20px;
+  padding-bottom: 30px;
+  text-indent: 20px;
+}
+
+main {
+  display: block;
+  border: 1px solid #463c3c;
+  padding: 1em;
+  box-shadow: 1px 1px 3px #463c3c;
+  border-radius: 8px;
+}
+
+/* Credits */
+
+#credits {
+  width: 100vw;
+  text-align: center;
+  font-size: 8px;
+}
+
+#credits a {
+  font-style: italic;
+}
