@@ -3,7 +3,7 @@
 * {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  color: #463c3c;
+  color: #0a0a0a;
 }
 
 body {
@@ -37,7 +37,7 @@ header figure img {
 }
 
 h2 {
-  font-size: 30px;
+  font-size: 40px;
 }
 
 header figure figcaption {
@@ -57,12 +57,12 @@ header figure figcaption {
 .profile-pic img {
   border-radius: 50%;
   position: absolute;
-  width: 6rem;
+  width: 6em;
 }
 
 .wrapper {
   display: block;
-  width: 90vw;
+  width: 70vw;
   margin-left: auto;
   margin-right: auto;
   margin-top: 3em;
@@ -112,10 +112,14 @@ div.content p {
 }
 
 .content-title {
-  text-align: center;
+  text-align: justify;
   font-weight: bold;
   font-size: 20px;
   padding-top: 25px;
+  margin-left: 1.0em;
+  margin-right: 1.0em;
+
+
 }
 
 .certificate-name {

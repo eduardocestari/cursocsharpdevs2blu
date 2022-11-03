@@ -1,0 +1,83 @@
+body{font-family:Calibri, Tahoma, Arial}
+ 
+ .TabControl{
+    width:50%;
+    overflow:hidden;
+    height:400px;
+    padding: 1em;
+}
+ 
+ .TabControl #header{
+    width:100%;
+    overflow:hidden;
+    cursor:hand;
+    
+    
+}
+
+.page-header{
+    border-bottom: 1px solid; 
+    width: 55%;
+}
+ 
+ .TabControl #content{
+    width:100%;
+    border: solid 1px #000000;
+    overflow:hidden;
+    height:100%;
+
+
+}
+  
+ .TabControl .abas{display:inline;}
+  
+ .TabControl .abas li{float:left}
+  
+ .abas{
+    list-style:none;
+ }
+ .aba{
+    width:100px;
+    height:30px;
+    border:solid 1px;
+    border-radius:5px 5px 0 0;
+    text-align:center;
+    padding-top:5px;
+    background:#606061;
+    border-bottom-color:#27408B}
+  
+ .ativa{
+    width:100px;
+    height:30px;
+    border:solid 1px #27408B;
+    border-radius:5px 5px 0 0;
+    text-align:center;
+    padding-top:5px;
+}
+ 
+.ativa span, .selecionada span{color:#fff}
+ 
+.TabControl #content{background:#59595a}
+ 
+.TabControl .conteudo{
+    width:80%;
+    background:#0f0f0f;
+    display:none;
+    height:100%;
+    color:#fff;
+    padding: 2em;
+}
+
+    
+ 
+.selecionada{
+    width:100px;
+    height:30px;
+    border:solid 1px #7a797a;
+    border-radius:5px 5px 0 0;
+    text-align:center;
+    padding-top:5px;
+    background:#27408B
+}
+
+
