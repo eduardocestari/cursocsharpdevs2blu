@@ -51,8 +51,11 @@ var listCharacter = new Array();
 
 const criaListaCharacter = (data) => {
    
-    let main = getElement('main');
-    console.log(data);
+    //let main = getElement('main');
+    //console.log(data);
+
+    let results = document.getElementById("retorno_main");
+    results.innerHTML = "";
     
     //listCharacter = new Array();   
     
@@ -69,7 +72,7 @@ const criaListaCharacter = (data) => {
             <h2 class="text-primary text-center" >${itemcard.translations.pt}</h2>
         </div>`;
         html.innerHTML = htmlBody;
-        main.appendChild(html);
+        results.appendChild(html);
         //listCharacter.push(itemcard);   
     });
 
