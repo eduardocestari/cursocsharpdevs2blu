@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+
+    <title>Exemplo 6 - Outras opções</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="http://malsup.github.io/min/jquery.form.min.js"></script>
+
+    <script type="text/javascript">
+
+        $(function ($) {
+
+            // Quando enviado o formulário
+            $('#formulario').ajaxForm({
+
+                // Tipo do retorno (XML, JSON ou SCRIPT)
+                dataType: 'JSON',
+
+                // Tipo de envio (POST ou GET)
+                type: 'POST',
+
+                // Tempo máximo de espera do retorno (milisegundos)
+                timeout: 10000,
+
+                // Método que será chamando quando a requisição for realizada com sucesso
+                success: function(resposta)
+                {
+                    console.log(resposta);
+                },
+
+                // Método que será chamado quando houver algum erro na requisição
+                // Seja algum erro no servidor ou então estourar o TIMEOUT
+                error: function()
+                {
+                    console.log('Oops, ocorreu um errro.');
+                }
+
+            });
+
+        });
+
+    </script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="col-xs-6">
+
+        <form id="formulario" method="post" action="enviar.php" role="form">
+
+            <legend>Formulário</legend>
+
+            <div class="form-group">
+                <label>Nome</label>
+                <input class="form-control" type="text" name="nome" required autofocus/>
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input class="form-control" type="email" name="email" required/>
+            </div>
+
+            <div class="form-group">
+                <label>Mensagem</label>
+                <textarea class="form-control" name="mensagem" rows="5" required></textarea>
+            </div>
+
+            <input id="enviar" class="btn btn-primary" type="submit" value="Enviar"/>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
