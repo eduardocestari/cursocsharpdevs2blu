@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BANDEIRAS DOS PAÍSES</title>
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      
+      <nav class="navbar navbar-expand-lg navbar-light bg-light nav justify-content-center">
+            <ul class="nav nav-tabs nav-justified">
+              <li class="nav-item">             
+                <a class="nav-link "  aria-current="page" href="index.html">Home</a>
+              </li> 
+              <li class="nav-item">             
+                <a id="btnbuscar2" class="nav-link " aria-current="page">Europa</a>
+              </li> 
+              <li class="nav-item">             
+                <a id="btnbuscar3" class="nav-link " aria-current="page">Africa</a>
+              </li> 
+              <li class="nav-item">             
+                <a id="btnbuscar4" class="nav-link " aria-current="page">Americas</a>
+              </li> 
+              <li class="nav-item">             
+                <a id="btnbuscar5" class="nav-link " aria-current="page">Asia</a>
+              </li> 
+              <li class="nav-item">             
+                <a id="btnbuscar6" class="nav-link " aria-current="page">Oceania</a>
+              </li>
+              <li class="nav-item">             
+                <a id="btn_contato" class="nav-link " aria-current="page">Contato</a>
+              </li>
+                      
+            </ul>                      
+      </nav> 
+      <nav class="navbar navbar-expand-lg navbar-light bg-light nav justify-content-center">       
+            <form class="d-flex" role="search">
+              <input id="pesquisar" class="form-control me-3" type="search" placeholder="Digite o nome país ou clique em buscar para exibir todos..." wiaria-label="Search" style="min-width:450px">
+              <button id="btnbuscar" class="btn btn-outline-success" type="button">Buscar</button>
+            </form>        
+      </nav> 
+    </header> 
+      
+    <div class="container my-4">
+      <main  class="row justify-content-center">        
+        <div class="card text-center">
+          <div class="card-header">
+            PROJETO API
+          </div>
+          <div class="card-body">
+            <h5 class="card-title"></h5>
+            <p class="card-text">Obtenha informações sobre países por meio de uma API RESTful</p><p></p> https://restcountries.com
+          </div>
+        </div>
+        <p></p>
+        <div class="card text-center" id="favoritos">
+          <div class="card-header" >
+            FAVORITOS
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+          </div>
+        </div>
+      </div>
+    </div>       
+
+        <div class="container my-4">
+        <section id="retorno_main" class="row justify-content-center"></section>
+        <section id="contato_form"></section>
+        <div class="card text-center">
+          <div class="card-header" id ="comentarios">
+            DEIXE SEU COMENTÁRIO
+          </div>
+          <section id="comentario_form"></section>
+        </div>
+      
+        <p></p>
+        <div class="card text-center" id="news">
+          <div class="card-header" >
+            ASSINE A NOSSA NEWSLETTER
+          </div>
+              <section class="bg-light text-center p-4 mt-1" id="newsletter>
+                <div class="container p-4">
+                  <h3 class="text-muted">Fique por dentro de todas as novidades!</h3>
+                  <p></p>
+                  <form action="#" method="Post">
+                    <input id = "new_email" type="text" name="text" placeholder="Informe seu e-mail!">
+                    <button id="btn_assinar" type="button" class="btn btn-default" onclick="addNews()">Assinar<i class="fa fa-envelope"></i></button>                
+                  </form>
+                  <button type="btn btn-danger" id="btnmodalteste">Show LocalStore</button> 
+                </div>
+              </section>               
+        </div>
+      </div>
+  </main>
+      
+   
+   <!-- Modal News-->
+   <div id="myModalNews" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-body">
+          <p>Lista de Assinantes</p>
+        </div>
+        <div class="container p-4" id="modal-body-news">
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+   </div>
+</div>
+
+    <!-- Modal -->
+    <div
+    class="modal fade"
+    id="charModal"
+    tabindex="-1"
+    aria-labelledby="charModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <!--<div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="charModalLabel">Mais Informações...</h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>-->
+        <div id="modal-body" class="modal-body">
+        
+        </div>
+        <!--<<div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+        </div>-->
+      </div>
+    </div>
+    
+     <!-- Footer -->
+<footer class="text-center text-lg-start bg-light text-muted">
+  <!-- Section: Social media -->
+    <div class="container text-center text-md-start mt-4">
+      <!-- Grid row -->
+      <div class="row mt-2">
+        <p></p> 
+        <p></p>
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <h6 class="text-uppercase fw-bold mb-4">
+            <i class="fas fa-envelope me-3"></i>Localização
+          </h6>
+            <i class="fas fa-home me-3">              
+            </i>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3556.285409364252!2d-49.07124104874701!3d-26.95785968302526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94df18468b6e2bc9%3A0xa75e0934c4610292!2sR.%20Vicente%20Schaeffer%20-%20Valpara%C3%ADso%2C%20Blumenau%20-%20SC%2C%2089022-006!5e0!3m2!1spt-BR!2sbr!4v1668641840063!5m2!1spt-BR!2sbr" width="400" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="col-md-1 col-lg-2 col-xl-2 mx-auto mb-4">
+          <h6 class="text-uppercase fw-bold mb-4">Contato</h6>
+          <p><i class="fas fa-home"></i>Blumenau / SC</p>
+          <p><i class="fas fa-envelope"></i>eduardo.cestari@gmail.com</p>         
+        </div>
+        
+      </div>
+    </div>
+  <!-- Copyright -->
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+    2022 
+  </div>
+
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
+
+    <!-- JQuery -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.min.js"
+      integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+      crossorigin="anonymous"
+    ></script>
+    <!-- Bootstrap -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Scripts -->
+    <script src="_js/library.js"></script>
+    <script src="_js/main.js"></script>
+  </body>
+</html>
